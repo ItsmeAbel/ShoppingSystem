@@ -1,0 +1,110 @@
+<products>
+	<product>
+		<id></id>
+		<name>Commentarii de Bello Gallico et Civili</name>
+		<price>449</price>
+		<type>Bok</type>
+		<author>Gaius Julius Caesar</author>
+		<genre>Historia</genre>
+		<format>Inbunden</format>
+		<language>Latin</language>
+	</product>
+	<product>
+		<id></id>
+		<name>How to Read a Book</name>
+		<price>149</price>
+		<type>Bok</type>
+		<author>Mortimer J. Adler</author>
+		<genre>Kursliteratur</genre>
+		<format>Pocket</format>
+	</product>
+	<product>
+		<id></id>
+		<name>Moby Dick</name>
+		<price>49</price>
+		<type>Bok</type>
+		<author>Herman Melville</author>
+		<genre>Äventyr</genre>
+		<format>Pocket</format>
+	</product>
+	<product>
+		<id></id>
+		<name>Great Gatsby</name>
+		<price>79</price>
+		<type>Bok</type>
+		<author>F. Scott Fitzgerald</author>
+		<genre>Noir</genre>
+		<format>e-bok</format>
+	</product>
+	<product>
+		<id></id>
+		<name>House of Leaves</name>
+		<price>49</price>
+		<type>Bok</type>
+		<author>Mark Z. Danielewski</author>
+		<genre>Skräck, Romantik</genre>
+	</product>
+	<product>
+		<id></id>
+		<name>Persona 5 Royal</name>
+		<price>599</price>
+		<type>Spel</type>
+		<platform>Playstation 4</platform>
+	</product>
+	<product>
+		<id></id>
+		<name>Microsoft Flight Simulator</name>
+		<price>499</price>
+		<type>Spel</type>
+		<platform>PC</platform>
+	</product>
+	<product>
+		<id></id>
+		<name>Katana Zero</name>
+		<price>199</price>
+		<type>Spel</type>
+		<platform>PC, Switch</platform>
+	</product>
+	<product>
+		<id></id>
+		<name>Duke Nukem 3D</name>
+		<price>99</price>
+		<type>Spel</type>
+		<platform>PC</platform>
+	</product>
+	<product>
+		<id></id>
+		<name>Nyckeln till frihet</name>
+		<price>99</price>
+		<type>DVD</type>
+		<playtime>142</playtime>
+	</product>
+	<product>
+		<id></id>
+		<name>Gudfadern</name>
+		<price>99</price>
+		<type>DVD</type>
+		<playtime>152</playtime>
+	</product>
+	<product>
+		<id></id>
+		<name>Sagan om ringen: konungens återkomst</name>
+		<price>149</price>
+		<type>DVD</type>
+		<playtime>154</playtime>
+	</product>
+	<product>
+		<id></id>
+		<name>Pulp fiction</name>
+		<price>99</price>
+		<type>DVD</type>
+		<playtime></playtime>
+	</product>
+	<product>
+		<id></id>
+		<name>Schindlers list</name>
+		<price>149</price>
+		<type>DVD</type>
+		<playtime>195</playtime>
+	</product>
+</products>

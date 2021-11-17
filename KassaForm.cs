@@ -12,9 +12,11 @@ namespace ShoppingSystem
 {
     public partial class KassaForm : Form
     {
+        BackendPart backend = new BackendPart();
         public KassaForm()
         {
             InitializeComponent();
+            productDatalistKassa.DataSource = backend.loadList();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -26,6 +28,12 @@ namespace ShoppingSystem
         {
             KundVagn form = new KundVagn();
             form.Show();
+        }
+
+        private void Add_Click(object sender, EventArgs e)
+        {
+            
+
         }
     }
 }

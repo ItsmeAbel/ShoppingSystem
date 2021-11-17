@@ -12,9 +12,11 @@ namespace ShoppingSystem
 {
     public partial class LagerForm : Form
     {
+        BackendPart backend = new BackendPart();
         public LagerForm()
         {
             InitializeComponent();
+            productDatalistLager.DataSource = backend.loadList();
         }
 
         private void ContinueButtton_Click(object sender, EventArgs e)
@@ -25,6 +27,12 @@ namespace ShoppingSystem
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void addToLagerButton_Click(object sender, EventArgs e)
+        {
+            addProductWindow form = new addProductWindow();
+            form.Show();
         }
     }
 }

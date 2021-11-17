@@ -54,7 +54,7 @@ namespace ShoppingSystem
             // 
             this.KVsplitContainer1.Panel2.Controls.Add(this.ContinueButton);
             this.KVsplitContainer1.Size = new System.Drawing.Size(800, 74);
-            this.KVsplitContainer1.SplitterDistance = 366;
+            this.KVsplitContainer1.SplitterDistance = 365;
             this.KVsplitContainer1.TabIndex = 6;
             // 
             // KVRemoveButton
@@ -62,7 +62,7 @@ namespace ShoppingSystem
             this.KVRemoveButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.KVRemoveButton.Location = new System.Drawing.Point(0, 0);
             this.KVRemoveButton.Name = "KVRemoveButton";
-            this.KVRemoveButton.Size = new System.Drawing.Size(366, 74);
+            this.KVRemoveButton.Size = new System.Drawing.Size(365, 74);
             this.KVRemoveButton.TabIndex = 4;
             this.KVRemoveButton.Text = "Ta Bort";
             this.KVRemoveButton.UseVisualStyleBackColor = true;
@@ -72,7 +72,7 @@ namespace ShoppingSystem
             this.ContinueButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ContinueButton.Location = new System.Drawing.Point(0, 0);
             this.ContinueButton.Name = "ContinueButton";
-            this.ContinueButton.Size = new System.Drawing.Size(430, 74);
+            this.ContinueButton.Size = new System.Drawing.Size(431, 74);
             this.ContinueButton.TabIndex = 4;
             this.ContinueButton.Text = "Försätt Vidare";
             this.ContinueButton.UseVisualStyleBackColor = true;
@@ -107,6 +107,7 @@ namespace ShoppingSystem
             this.Controls.Add(this.KVsplitContainer1);
             this.Controls.Add(this.ProduktLista);
             this.Controls.Add(this.ListLabel);
+            this.MinimumSize = new System.Drawing.Size(818, 605);
             this.Name = "KundVagn";
             this.Text = "KundVagn";
             this.KVsplitContainer1.Panel1.ResumeLayout(false);
