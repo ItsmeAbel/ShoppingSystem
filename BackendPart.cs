@@ -12,6 +12,7 @@ namespace ShoppingSystem
 {
     class BackendPart
     {
+        List<ProductList> productlist;
         public BackendPart()
         {
 
@@ -19,8 +20,8 @@ namespace ShoppingSystem
 
         public List<ProductList> loadList()
         {
-            List<ProductList> productlist;
-            using (var reader = new StreamReader(@"C:\Users\abelg\source\repos\ShoppingSystem\products.csv"))
+            
+            using (var reader = new StreamReader("products.csv")) //Easy solution for a relative path. Can't beleve i spent 2 hours on this just to find out this is the solution. smh
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
                 productlist = csv.GetRecords<ProductList>().ToList();
@@ -28,16 +29,18 @@ namespace ShoppingSystem
             }
             return productlist;
         }
-        public List<ProductList> addToBasket()
+        public List<ProductList> addToBasket(int iid, string nname, int pprice, 
+            string ttype, string aauthor,string ggenre, string fformat,
+            string llanguage, string pplatform, int pplaytime)
         {
-            List<ProductList> productlist;
-            using (var reader = new StreamReader(@"C:\Users\abelg\source\repos\ShoppingSystem\products.csv"))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-            {
-                productlist = csv.GetRecords<ProductList>().ToList();
 
-            }
-            
+            productlist.Add(new ProductList() {id= iid, name = nname,
+                price= pprice,type=ttype,author=aauthor, genre = ggenre,
+                format= fformat, language= llanguage, platform= pplatform, playtime= pplaytime});
+
+            var writer = new StreamWriter("products.csv");
+            var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+            csv.WriteRecords(productlist);
             return productlist;
         }
 
