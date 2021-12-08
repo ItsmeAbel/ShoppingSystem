@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using CsvHelper;
 using System.Globalization;
-
+using CsvHelper.Configuration;
 
 namespace ShoppingSystem
 {
@@ -29,19 +29,38 @@ namespace ShoppingSystem
             }
             return productlist;
         }
-        public List<ProductList> addToBasket(int iid, string nname, int pprice, 
+        public void addToBasket(int iid, string nname, int pprice, 
             string ttype, string aauthor,string ggenre, string fformat,
             string llanguage, string pplatform, int pplaytime)
         {
+            //we need to create a new list with the items...
+            //...and append the new list to the already existing one
 
-            productlist.Add(new ProductList() {id= iid, name = nname,
+            productlist = new List<ProductList>
+           {
+
+               new ProductList {id= iid, name = nname,
                 price= pprice,type=ttype,author=aauthor, genre = ggenre,
-                format= fformat, language= llanguage, platform= pplatform, playtime= pplaytime});
+                format= fformat, language= llanguage, platform= pplatform, playtime= pplaytime}
+           };
 
+            // Append to the file.
+            var config = new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                // Don't write the header again.
+                HasHeaderRecord = false,
+            };
+
+            using (var stream = File.Open("products.csv", FileMode.Append))
+            using (var writer = new StreamWriter(stream))
+            using (var csv = new CsvWriter(writer, config))
+            {
+                csv.WriteRecords(productlist);
+            }
+            /*
             var writer = new StreamWriter("products.csv");
             var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
-            csv.WriteRecords(productlist);
-            return productlist;
+            csv.WriteRecords(productlist);*/
         }
 
 

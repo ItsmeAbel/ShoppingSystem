@@ -16,7 +16,7 @@ namespace ShoppingSystem
         public LagerForm()
         {
             InitializeComponent();
-            updateList();
+            productDatalistLager.DataSource = backend.loadList();
         }
 
         private void ContinueButtton_Click(object sender, EventArgs e)
@@ -33,12 +33,15 @@ namespace ShoppingSystem
         {
             addProductLager form = new addProductLager();
             form.Show();
-            updateList();
+            
         }
 
-        private void updateList()
+        public void updateList()
         {
-            productDatalistLager.DataSource = backend.loadList();
+            productDatalistLager.Rows.Clear();
+            productDatalistLager.Columns.Clear();
+
+
 
         }
     }

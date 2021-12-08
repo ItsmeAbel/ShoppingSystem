@@ -13,6 +13,7 @@ namespace ShoppingSystem
     public partial class addProductLager : Form
     {
         BackendPart backend = new BackendPart();
+        LagerForm lager = new LagerForm();
         public addProductLager()
         {
             InitializeComponent();
@@ -28,6 +29,9 @@ namespace ShoppingSystem
             backend.addToBasket(Int32.Parse(IDTextBox.Text), NameTextBox.Text, Int32.Parse(PriceTextBox.Text), TypeTextBox.Text,
             AuthorTextBox.Text, GenreTextBox.Text, FormatTextBox.Text,
                 LanguageTextBox.Text, PlatformTextBox.Text, Int32.Parse(PlaytimeTextBox.Text));
+
+            this.Close();
+            lager.updateList();
         }
     }
 }
