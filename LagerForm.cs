@@ -13,15 +13,17 @@ namespace ShoppingSystem
     public partial class LagerForm : Form
     {
         BackendPart backend = new BackendPart();
+        BindingSource productListSource;
         public LagerForm()
         {
             InitializeComponent();
-            productDatalistLager.DataSource = backend.loadList();
+            productListSource = new BindingSource();
+            updateList();
         }
 
         private void ContinueButtton_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,11 +40,8 @@ namespace ShoppingSystem
 
         public void updateList()
         {
-            productDatalistLager.Rows.Clear();
-            productDatalistLager.Columns.Clear();
-
-
-
+            productListSource.DataSource = backend.loadList();
+            productDatalistLager.DataSource = productListSource;
         }
     }
 }
