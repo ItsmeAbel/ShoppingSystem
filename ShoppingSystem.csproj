@@ -92,6 +92,7 @@
     <Compile Include="LagerForm.Designer.cs">
       <DependentUpon>LagerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lala.cs" />
     <Compile Include="ProductList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

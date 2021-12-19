@@ -12,8 +12,7 @@ namespace ShoppingSystem
 {
     public partial class addProductLager : Form
     {
-        BackendPart backend = new BackendPart();
-        LagerForm lager = new LagerForm();
+        internal ProductList plist { get; private set; }
         public addProductLager()
         {
             InitializeComponent();
@@ -26,12 +25,23 @@ namespace ShoppingSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-            backend.addToBasket(Int32.Parse(IDTextBox.Text), NameTextBox.Text, Int32.Parse(PriceTextBox.Text), TypeTextBox.Text,
-            AuthorTextBox.Text, GenreTextBox.Text, FormatTextBox.Text,
-                LanguageTextBox.Text, PlatformTextBox.Text, Int32.Parse(PlaytimeTextBox.Text));
+            plist = new ProductList();
+            plist.id = Int32.Parse(IDTextBox.Text);
+            plist.name = IDTextBox.Text;
+            plist.price = Int32.Parse(PriceTextBox.Text);
+            plist.type = TypeTextBox.Text;
+            plist.author = AuthorTextBox.Text;
+            plist.genre = GenreTextBox.Text;
+            plist.format = FormatTextBox.Text;
+            plist.language = LanguageTextBox.Text;
+            plist.platform = PlatformTextBox.Text;
+            plist.playtime = Int32.Parse(PlaytimeTextBox.Text);
 
-            this.Close();
-            lager.updateList();
+           /* backend.addToBasket(Int32.Parse(IDTextBox.Text), NameTextBox.Text, Int32.Parse(PriceTextBox.Text), TypeTextBox.Text,
+            AuthorTextBox.Text, GenreTextBox.Text, FormatTextBox.Text,
+                LanguageTextBox.Text, PlatformTextBox.Text, Int32.Parse(PlaytimeTextBox.Text));*/
+           DialogResult = DialogResult.OK;
+            Close();
         }
     }
 }

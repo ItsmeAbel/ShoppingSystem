@@ -12,16 +12,18 @@ namespace ShoppingSystem
 {
     class BackendPart
     {
+
         List<ProductList> productlist;
 
         public BackendPart()
         {
+            
+            productlist = new List<ProductList>();
 
         }
 
         public List<ProductList> loadList()
         {
-            
             using (var reader = new StreamReader("products.csv")) //Easy solution for a relative path. Can't beleve i spent 2 hours on this just to find out this is the solution. smh
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
@@ -30,20 +32,44 @@ namespace ShoppingSystem
             }
             return productlist;
         }
+
+
         public void addToBasket(int iid, string nname, int pprice, 
             string ttype, string aauthor,string ggenre, string fformat,
             string llanguage, string pplatform, int pplaytime)
         {
-            //we need to create a new list with the items...
-            //...and append the new list to the already existing one
 
-            productlist = new List<ProductList>
+            /* ProductList newlist= new ProductList(iid, nname, pprice, ttype, aauthor, 
+                 ggenre, fformat, llanguage, pplatform, pplaytime);
+             //we need to create a new list with the items...
+             //...and append the new list to the already existing one
+
+
+             productlist.Add(newlist);*/
+
+            List<ProductList> newlist;
+            newlist = new List<ProductList>
            {
 
                new ProductList {id= iid, name = nname,
                 price= pprice,type=ttype,author=aauthor, genre = ggenre,
                 format= fformat, language= llanguage, platform= pplatform, playtime= pplaytime}
            };
+
+            productlist.AddRange(newlist);
+            //saveToCSV(newlist);
+            
+            
+            /*
+            var writer = new StreamWriter("products.csv");
+            var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+            csv.WriteRecords(productlist);*/
+        }
+
+
+        public void saveToCSV(ProductList templist)
+        {
+            throw new NotImplementedException();
 
             // Append to the file.
             var config = new CsvConfiguration(CultureInfo.InvariantCulture)
@@ -56,13 +82,12 @@ namespace ShoppingSystem
             using (var writer = new StreamWriter(stream))
             using (var csv = new CsvWriter(writer, config))
             {
-                csv.WriteRecords(productlist);
+
+                csv.WriteRecords(templist);
             }
-            /*
-            var writer = new StreamWriter("products.csv");
-            var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
-            csv.WriteRecords(productlist);*/
+
         }
+
 
 
     }

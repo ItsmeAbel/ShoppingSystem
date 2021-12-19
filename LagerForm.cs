@@ -13,10 +13,16 @@ namespace ShoppingSystem
     public partial class LagerForm : Form
     {
         BackendPart backend = new BackendPart();
+
+        
+       
+        BindingList<ProductList> lagerProductList;
         BindingSource productListSource;
         public LagerForm()
         {
             InitializeComponent();
+            //List<ProductList> locallist = backend.loadList();
+            lagerProductList = new BindingList<ProductList>(backend.loadList());
             productListSource = new BindingSource();
             updateList();
         }
@@ -34,13 +40,25 @@ namespace ShoppingSystem
         private void addToLagerButton_Click(object sender, EventArgs e)
         {
             addProductLager form = new addProductLager();
-            form.Show();
+            form.StartPosition = FormStartPosition.CenterParent;
+            //form.Show();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                productListSource.Add(form.plist);
+                backend.saveToCSV(form.plist);
+            }
+            else
+            {
+
+
+            }
             
+            //updateList();
         }
 
         public void updateList()
         {
-            productListSource.DataSource = backend.loadList();
+            productListSource.DataSource = lagerProductList;
             productDatalistLager.DataSource = productListSource;
         }
     }
