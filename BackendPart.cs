@@ -67,22 +67,13 @@ namespace ShoppingSystem
         }
 
 
-        public void saveToCSV(ProductList templist)
+        public void saveToCSV(IEnumerable<ProductList> templist)
         {
-            throw new NotImplementedException();
-
-            // Append to the file.
-            var config = new CsvConfiguration(CultureInfo.InvariantCulture)
+            //saves the whole list into a csv file
+                //was trying to append the list before, which didn't work. Solved it by the saving the whole file into the list instead
+            using (var stream = new StreamWriter("products.csv"))
+            using (var csv = new CsvWriter(stream, CultureInfo.InvariantCulture))
             {
-                // Don't write the header again.
-                HasHeaderRecord = false,
-            };
-
-            using (var stream = File.Open("products.csv", FileMode.Append))
-            using (var writer = new StreamWriter(stream))
-            using (var csv = new CsvWriter(writer, config))
-            {
-
                 csv.WriteRecords(templist);
             }
 

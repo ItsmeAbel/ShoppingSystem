@@ -45,7 +45,7 @@ namespace ShoppingSystem
             if (form.ShowDialog() == DialogResult.OK)
             {
                 productListSource.Add(form.plist);
-                backend.saveToCSV(form.plist);
+                backend.saveToCSV(lagerProductList);
             }
             else
             {
