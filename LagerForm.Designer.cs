@@ -116,6 +116,7 @@ namespace ShoppingSystem
             this.RemoveButton.TabIndex = 4;
             this.RemoveButton.Text = "Ta Bort";
             this.RemoveButton.UseVisualStyleBackColor = true;
+            this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
             // 
             // splitContainer2
             // 

@@ -60,6 +60,17 @@ namespace ShoppingSystem
         {
             productListSource.DataSource = lagerProductList;
             productDatalistLager.DataSource = productListSource;
+            
+        }
+
+        private void RemoveButton_Click(object sender, EventArgs e)
+        {
+            if (productDatalistLager.SelectedRows.Count < 1)
+                return;
+            var product = (ProductList)productDatalistLager.SelectedRows[0].DataBoundItem;
+            productListSource.Remove(product);
+            backend.saveToCSV(lagerProductList);
+
         }
     }
 }
