@@ -40,8 +40,13 @@ namespace ShoppingSystem
            /* backend.addToBasket(Int32.Parse(IDTextBox.Text), NameTextBox.Text, Int32.Parse(PriceTextBox.Text), TypeTextBox.Text,
             AuthorTextBox.Text, GenreTextBox.Text, FormatTextBox.Text,
                 LanguageTextBox.Text, PlatformTextBox.Text, Int32.Parse(PlaytimeTextBox.Text));*/
-           DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.OK;
             Close();
+        }
+
+        private void LagerCancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -33,7 +33,6 @@ namespace ShoppingSystem
             return productlist;
         }
 
-
         public void addToBasket(int iid, string nname, int pprice, 
             string ttype, string aauthor,string ggenre, string fformat,
             string llanguage, string pplatform, int pplaytime)
@@ -66,7 +65,18 @@ namespace ShoppingSystem
             csv.WriteRecords(productlist);*/
         }
 
-
+        private bool idcheck(int idd)
+        {
+            if(productlist.Exists((x => x.id == idd)) == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
         public void saveToCSV(IEnumerable<ProductList> templist)
         {
             //saves the whole list into a csv file

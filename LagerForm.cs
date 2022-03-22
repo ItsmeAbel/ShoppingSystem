@@ -24,7 +24,8 @@ namespace ShoppingSystem
             //List<ProductList> locallist = backend.loadList();
             lagerProductList = new BindingList<ProductList>(backend.loadList());
             productListSource = new BindingSource();
-            updateList();
+            productListSource.DataSource = lagerProductList;
+            productDatalistLager.DataSource = productListSource;
         }
 
         private void ContinueButtton_Click(object sender, EventArgs e)
@@ -44,8 +45,18 @@ namespace ShoppingSystem
             //form.Show();
             if (form.ShowDialog() == DialogResult.OK)
             {
-                productListSource.Add(form.plist);
-                backend.saveToCSV(lagerProductList);
+                
+                int checkid = form.plist.id;
+                if(productListSource.Contains(checkid) == true)
+                {
+
+                    MessageBox.Show("Wrong format");
+                }
+                else {
+                    productListSource.Add(form.plist);
+                    backend.saveToCSV(lagerProductList);
+                 }
+
             }
             else
             {
@@ -70,6 +81,16 @@ namespace ShoppingSystem
             var product = (ProductList)productDatalistLager.SelectedRows[0].DataBoundItem;
             productListSource.Remove(product);
             backend.saveToCSV(lagerProductList);
+
+        }
+
+        private void LagerFormbindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void productDatalistLager_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

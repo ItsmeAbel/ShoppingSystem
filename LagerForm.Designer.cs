@@ -59,8 +59,8 @@ namespace ShoppingSystem
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 377);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 464);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -70,16 +70,15 @@ namespace ShoppingSystem
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(659, 67);
-            this.splitContainer1.SplitterDistance = 254;
-            this.splitContainer1.SplitterWidth = 3;
+            this.splitContainer1.Size = new System.Drawing.Size(879, 82);
+            this.splitContainer1.SplitterDistance = 338;
             this.splitContainer1.TabIndex = 6;
             // 
             // splitContainer3
             // 
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainer3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.splitContainer3.Name = "splitContainer3";
             // 
             // splitContainer3.Panel1
@@ -89,18 +88,17 @@ namespace ShoppingSystem
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.RemoveButton);
-            this.splitContainer3.Size = new System.Drawing.Size(254, 67);
-            this.splitContainer3.SplitterDistance = 122;
-            this.splitContainer3.SplitterWidth = 3;
+            this.splitContainer3.Size = new System.Drawing.Size(338, 82);
+            this.splitContainer3.SplitterDistance = 162;
             this.splitContainer3.TabIndex = 8;
             // 
             // addToLagerButton
             // 
             this.addToLagerButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.addToLagerButton.Location = new System.Drawing.Point(0, 0);
-            this.addToLagerButton.Margin = new System.Windows.Forms.Padding(2);
+            this.addToLagerButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addToLagerButton.Name = "addToLagerButton";
-            this.addToLagerButton.Size = new System.Drawing.Size(122, 67);
+            this.addToLagerButton.Size = new System.Drawing.Size(162, 82);
             this.addToLagerButton.TabIndex = 0;
             this.addToLagerButton.Text = "Lägg Ny Produkt";
             this.addToLagerButton.UseVisualStyleBackColor = true;
@@ -110,9 +108,9 @@ namespace ShoppingSystem
             // 
             this.RemoveButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RemoveButton.Location = new System.Drawing.Point(0, 0);
-            this.RemoveButton.Margin = new System.Windows.Forms.Padding(2);
+            this.RemoveButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RemoveButton.Name = "RemoveButton";
-            this.RemoveButton.Size = new System.Drawing.Size(129, 67);
+            this.RemoveButton.Size = new System.Drawing.Size(172, 82);
             this.RemoveButton.TabIndex = 4;
             this.RemoveButton.Text = "Ta Bort";
             this.RemoveButton.UseVisualStyleBackColor = true;
@@ -122,7 +120,7 @@ namespace ShoppingSystem
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainer2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.splitContainer2.Name = "splitContainer2";
             // 
             // splitContainer2.Panel1
@@ -132,18 +130,17 @@ namespace ShoppingSystem
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.GrossitButton);
-            this.splitContainer2.Size = new System.Drawing.Size(402, 67);
-            this.splitContainer2.SplitterDistance = 198;
-            this.splitContainer2.SplitterWidth = 3;
+            this.splitContainer2.Size = new System.Drawing.Size(537, 82);
+            this.splitContainer2.SplitterDistance = 264;
             this.splitContainer2.TabIndex = 7;
             // 
             // ContinueButtton
             // 
             this.ContinueButtton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ContinueButtton.Location = new System.Drawing.Point(0, 0);
-            this.ContinueButtton.Margin = new System.Windows.Forms.Padding(2);
+            this.ContinueButtton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ContinueButtton.Name = "ContinueButtton";
-            this.ContinueButtton.Size = new System.Drawing.Size(198, 67);
+            this.ContinueButtton.Size = new System.Drawing.Size(264, 82);
             this.ContinueButtton.TabIndex = 4;
             this.ContinueButtton.Text = "Visa Kundkorg";
             this.ContinueButtton.UseVisualStyleBackColor = true;
@@ -153,9 +150,9 @@ namespace ShoppingSystem
             // 
             this.GrossitButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GrossitButton.Location = new System.Drawing.Point(0, 0);
-            this.GrossitButton.Margin = new System.Windows.Forms.Padding(2);
+            this.GrossitButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GrossitButton.Name = "GrossitButton";
-            this.GrossitButton.Size = new System.Drawing.Size(201, 67);
+            this.GrossitButton.Size = new System.Drawing.Size(269, 82);
             this.GrossitButton.TabIndex = 5;
             this.GrossitButton.Text = "Grossit";
             this.GrossitButton.UseVisualStyleBackColor = true;
@@ -164,10 +161,9 @@ namespace ShoppingSystem
             // ListLabel
             // 
             this.ListLabel.AutoSize = true;
-            this.ListLabel.Location = new System.Drawing.Point(-2, 6);
-            this.ListLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ListLabel.Location = new System.Drawing.Point(-3, 7);
             this.ListLabel.Name = "ListLabel";
-            this.ListLabel.Size = new System.Drawing.Size(69, 13);
+            this.ListLabel.Size = new System.Drawing.Size(91, 17);
             this.ListLabel.TabIndex = 4;
             this.ListLabel.Text = "Produkt Lista";
             // 
@@ -179,8 +175,8 @@ namespace ShoppingSystem
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.productDatalistLager.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.productDatalistLager.Location = new System.Drawing.Point(0, 23);
-            this.productDatalistLager.Margin = new System.Windows.Forms.Padding(2);
+            this.productDatalistLager.Location = new System.Drawing.Point(0, 28);
+            this.productDatalistLager.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.productDatalistLager.MultiSelect = false;
             this.productDatalistLager.Name = "productDatalistLager";
             this.productDatalistLager.ReadOnly = true;
@@ -191,19 +187,24 @@ namespace ShoppingSystem
             this.productDatalistLager.ShowCellToolTips = false;
             this.productDatalistLager.ShowEditingIcon = false;
             this.productDatalistLager.ShowRowErrors = false;
-            this.productDatalistLager.Size = new System.Drawing.Size(658, 343);
+            this.productDatalistLager.Size = new System.Drawing.Size(877, 422);
             this.productDatalistLager.TabIndex = 7;
+            this.productDatalistLager.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.productDatalistLager_CellContentClick);
+            // 
+            // LagerFormbindingSource
+            // 
+            this.LagerFormbindingSource.CurrentChanged += new System.EventHandler(this.LagerFormbindingSource_CurrentChanged);
             // 
             // LagerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 444);
+            this.ClientSize = new System.Drawing.Size(879, 546);
             this.Controls.Add(this.productDatalistLager);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.ListLabel);
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(675, 483);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinimumSize = new System.Drawing.Size(894, 584);
             this.Name = "LagerForm";
             this.Text = "LagerForm";
             this.splitContainer1.Panel1.ResumeLayout(false);
