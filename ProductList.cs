@@ -27,6 +27,6 @@
         public string language { get; set; }
         public string platform { get; set; }
         public int playtime { get; set; }
-
+        public int status { get; set; }
     }
 }

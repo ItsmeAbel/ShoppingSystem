@@ -65,8 +65,9 @@ namespace ShoppingSystem
             csv.WriteRecords(productlist);*/
         }
 
-        private bool idcheck(int idd)
+        public bool idcheck(int idd)
         {
+            loadList();
             if(productlist.Exists((x => x.id == idd)) == true)
             {
                 return true;

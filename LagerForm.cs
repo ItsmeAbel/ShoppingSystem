@@ -45,12 +45,12 @@ namespace ShoppingSystem
             //form.Show();
             if (form.ShowDialog() == DialogResult.OK)
             {
-                
-                int checkid = form.plist.id;
-                if(productListSource.Contains(checkid) == true)
+
+                Console.WriteLine("{0}", backend.idcheck(form.plist.id));
+                if (backend.idcheck(form.plist.id) == true)
                 {
 
-                    MessageBox.Show("Wrong format");
+                    MessageBox.Show("Varunummer är redan taget, vänligen ange korrekt varunummer!");
                 }
                 else {
                     productListSource.Add(form.plist);
@@ -60,7 +60,7 @@ namespace ShoppingSystem
             }
             else
             {
-
+                MessageBox.Show("Något är fel!");
 
             }
             
@@ -78,9 +78,25 @@ namespace ShoppingSystem
         {
             if (productDatalistLager.SelectedRows.Count < 1)
                 return;
-            var product = (ProductList)productDatalistLager.SelectedRows[0].DataBoundItem;
-            productListSource.Remove(product);
-            backend.saveToCSV(lagerProductList);
+            var product = (ProductList)productDatalistLager.SelectedRows[0].DataBoundItem; //the item in the selected row is out in the variable product
+            if(product.status != 0)
+            {
+                productListSource.Remove(product);
+                backend.saveToCSV(lagerProductList);
+
+            }
+            else {
+                DialogResult dialogResult = MessageBox.Show("vill du verkligen ta bort varan?", "vill du verkligen ta bort varan?", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    productListSource.Remove(product);
+                    backend.saveToCSV(lagerProductList);
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //gör inget
+                }
+            }
 
         }
 
