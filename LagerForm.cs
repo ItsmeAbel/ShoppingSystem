@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 
 namespace ShoppingSystem
 {
@@ -35,6 +36,12 @@ namespace ShoppingSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (productDatalistLager.SelectedRows.Count < 1)
+                return;
+            var product = (ProductList)productDatalistLager.SelectedRows[0].DataBoundItem;
+            Grossit grossit = new Grossit();
+            grossit.StartPosition = FormStartPosition.CenterParent;
+            grossit.Show();
 
         }
 
@@ -79,14 +86,14 @@ namespace ShoppingSystem
             if (productDatalistLager.SelectedRows.Count < 1)
                 return;
             var product = (ProductList)productDatalistLager.SelectedRows[0].DataBoundItem; //the item in the selected row is out in the variable product
-            if(product.status != 0)
+            if(product.status == 0) //om producted inte finns i lager, ta bort
             {
                 productListSource.Remove(product);
                 backend.saveToCSV(lagerProductList);
 
             }
             else {
-                DialogResult dialogResult = MessageBox.Show("vill du verkligen ta bort varan?", "vill du verkligen ta bort varan?", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Vill du verkligen ta bort varan?", "Vran finns i lager!", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     productListSource.Remove(product);

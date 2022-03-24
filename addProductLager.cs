@@ -36,6 +36,7 @@ namespace ShoppingSystem
             plist.language = LanguageTextBox.Text;
             plist.platform = PlatformTextBox.Text;
             plist.playtime = Int32.Parse(PlaytimeTextBox.Text);
+            plist.status = Int32.Parse(StatusTextBox.Text);
 
            /* backend.addToBasket(Int32.Parse(IDTextBox.Text), NameTextBox.Text, Int32.Parse(PriceTextBox.Text), TypeTextBox.Text,
             AuthorTextBox.Text, GenreTextBox.Text, FormatTextBox.Text,

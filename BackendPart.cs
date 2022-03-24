@@ -65,10 +65,10 @@ namespace ShoppingSystem
             csv.WriteRecords(productlist);*/
         }
 
-        public bool idcheck(int idd)
+        public bool idcheck(int idd)  //kollar ifall varunummret redan finns
         {
             loadList();
-            if(productlist.Exists((x => x.id == idd)) == true)
+            if(productlist.Exists((x => x.id == idd)) == true) 
             {
                 return true;
             }
@@ -78,6 +78,8 @@ namespace ShoppingSystem
             }
             
         }
+
+
         public void saveToCSV(IEnumerable<ProductList> templist)
         {
             //saves the whole list into a csv file

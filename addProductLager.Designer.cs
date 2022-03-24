@@ -63,6 +63,9 @@ namespace ShoppingSystem
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.NameLabel = new System.Windows.Forms.Label();
             this.NameTextBox = new System.Windows.Forms.TextBox();
+            this.splitContainer12 = new System.Windows.Forms.SplitContainer();
+            this.statuslabel = new System.Windows.Forms.Label();
+            this.StatusTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer11)).BeginInit();
             this.splitContainer11.Panel1.SuspendLayout();
@@ -108,12 +111,17 @@ namespace ShoppingSystem
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer12)).BeginInit();
+            this.splitContainer12.Panel1.SuspendLayout();
+            this.splitContainer12.Panel2.SuspendLayout();
+            this.splitContainer12.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.splitContainer11);
             this.groupBox1.Controls.Add(this.splitContainer9);
+            this.groupBox1.Controls.Add(this.splitContainer12);
             this.groupBox1.Controls.Add(this.splitContainer10);
             this.groupBox1.Controls.Add(this.splitContainer8);
             this.groupBox1.Controls.Add(this.splitContainer7);
@@ -128,7 +136,7 @@ namespace ShoppingSystem
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(651, 607);
+            this.groupBox1.Size = new System.Drawing.Size(654, 667);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
@@ -136,7 +144,7 @@ namespace ShoppingSystem
             // splitContainer11
             // 
             this.splitContainer11.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitContainer11.Location = new System.Drawing.Point(3, 531);
+            this.splitContainer11.Location = new System.Drawing.Point(3, 591);
             this.splitContainer11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.splitContainer11.Name = "splitContainer11";
             // 
@@ -147,8 +155,8 @@ namespace ShoppingSystem
             // splitContainer11.Panel2
             // 
             this.splitContainer11.Panel2.Controls.Add(this.LagerCancelButton);
-            this.splitContainer11.Size = new System.Drawing.Size(645, 74);
-            this.splitContainer11.SplitterDistance = 294;
+            this.splitContainer11.Size = new System.Drawing.Size(648, 74);
+            this.splitContainer11.SplitterDistance = 296;
             this.splitContainer11.SplitterWidth = 5;
             this.splitContainer11.TabIndex = 3;
             // 
@@ -158,7 +166,7 @@ namespace ShoppingSystem
             this.LagerAddButton.Location = new System.Drawing.Point(0, 0);
             this.LagerAddButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.LagerAddButton.Name = "LagerAddButton";
-            this.LagerAddButton.Size = new System.Drawing.Size(294, 74);
+            this.LagerAddButton.Size = new System.Drawing.Size(296, 74);
             this.LagerAddButton.TabIndex = 0;
             this.LagerAddButton.Text = "Add";
             this.LagerAddButton.UseVisualStyleBackColor = true;
@@ -170,7 +178,7 @@ namespace ShoppingSystem
             this.LagerCancelButton.Location = new System.Drawing.Point(0, 0);
             this.LagerCancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.LagerCancelButton.Name = "LagerCancelButton";
-            this.LagerCancelButton.Size = new System.Drawing.Size(346, 74);
+            this.LagerCancelButton.Size = new System.Drawing.Size(347, 74);
             this.LagerCancelButton.TabIndex = 0;
             this.LagerCancelButton.Text = "Cancel";
             this.LagerCancelButton.UseVisualStyleBackColor = true;
@@ -566,17 +574,56 @@ namespace ShoppingSystem
             this.NameTextBox.Size = new System.Drawing.Size(485, 45);
             this.NameTextBox.TabIndex = 0;
             // 
+            // splitContainer12
+            // 
+            this.splitContainer12.Location = new System.Drawing.Point(12, 540);
+            this.splitContainer12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.splitContainer12.Name = "splitContainer12";
+            // 
+            // splitContainer12.Panel1
+            // 
+            this.splitContainer12.Panel1.Controls.Add(this.statuslabel);
+            this.splitContainer12.Panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // splitContainer12.Panel2
+            // 
+            this.splitContainer12.Panel2.Controls.Add(this.StatusTextBox);
+            this.splitContainer12.Size = new System.Drawing.Size(635, 47);
+            this.splitContainer12.SplitterDistance = 140;
+            this.splitContainer12.TabIndex = 2;
+            // 
+            // statuslabel
+            // 
+            this.statuslabel.AutoSize = true;
+            this.statuslabel.BackColor = System.Drawing.SystemColors.Control;
+            this.statuslabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statuslabel.Location = new System.Drawing.Point(0, 0);
+            this.statuslabel.Name = "statuslabel";
+            this.statuslabel.Size = new System.Drawing.Size(104, 32);
+            this.statuslabel.TabIndex = 1;
+            this.statuslabel.Text = "Status:";
+            this.statuslabel.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // StatusTextBox
+            // 
+            this.StatusTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.StatusTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusTextBox.Location = new System.Drawing.Point(0, 0);
+            this.StatusTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.StatusTextBox.Name = "StatusTextBox";
+            this.StatusTextBox.Size = new System.Drawing.Size(491, 45);
+            this.StatusTextBox.TabIndex = 0;
+            // 
             // addProductLager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 607);
+            this.ClientSize = new System.Drawing.Size(654, 667);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(669, 654);
+            this.MaximumSize = new System.Drawing.Size(800, 800);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(669, 654);
             this.Name = "addProductLager";
             this.Text = "Lager";
             this.groupBox1.ResumeLayout(false);
@@ -644,6 +691,12 @@ namespace ShoppingSystem
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.splitContainer12.Panel1.ResumeLayout(false);
+            this.splitContainer12.Panel1.PerformLayout();
+            this.splitContainer12.Panel2.ResumeLayout(false);
+            this.splitContainer12.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer12)).EndInit();
+            this.splitContainer12.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -684,5 +737,8 @@ namespace ShoppingSystem
         private System.Windows.Forms.Label FormatLabel;
         private System.Windows.Forms.TextBox FormatTextBox;
         private System.Windows.Forms.Label IDLabel;
+        private System.Windows.Forms.SplitContainer splitContainer12;
+        private System.Windows.Forms.Label statuslabel;
+        private System.Windows.Forms.TextBox StatusTextBox;
     }
 }
