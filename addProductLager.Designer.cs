@@ -36,6 +36,9 @@ namespace ShoppingSystem
             this.splitContainer9 = new System.Windows.Forms.SplitContainer();
             this.TypeLabel = new System.Windows.Forms.Label();
             this.TypeTextBox = new System.Windows.Forms.TextBox();
+            this.splitContainer12 = new System.Windows.Forms.SplitContainer();
+            this.statuslabel = new System.Windows.Forms.Label();
+            this.StatusTextBox = new System.Windows.Forms.TextBox();
             this.splitContainer10 = new System.Windows.Forms.SplitContainer();
             this.PlaytimeLabel = new System.Windows.Forms.Label();
             this.PlaytimeTextBox = new System.Windows.Forms.TextBox();
@@ -63,9 +66,6 @@ namespace ShoppingSystem
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.NameLabel = new System.Windows.Forms.Label();
             this.NameTextBox = new System.Windows.Forms.TextBox();
-            this.splitContainer12 = new System.Windows.Forms.SplitContainer();
-            this.statuslabel = new System.Windows.Forms.Label();
-            this.StatusTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer11)).BeginInit();
             this.splitContainer11.Panel1.SuspendLayout();
@@ -75,6 +75,10 @@ namespace ShoppingSystem
             this.splitContainer9.Panel1.SuspendLayout();
             this.splitContainer9.Panel2.SuspendLayout();
             this.splitContainer9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer12)).BeginInit();
+            this.splitContainer12.Panel1.SuspendLayout();
+            this.splitContainer12.Panel2.SuspendLayout();
+            this.splitContainer12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer10)).BeginInit();
             this.splitContainer10.Panel1.SuspendLayout();
             this.splitContainer10.Panel2.SuspendLayout();
@@ -111,10 +115,6 @@ namespace ShoppingSystem
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer12)).BeginInit();
-            this.splitContainer12.Panel1.SuspendLayout();
-            this.splitContainer12.Panel2.SuspendLayout();
-            this.splitContainer12.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -145,7 +145,7 @@ namespace ShoppingSystem
             // 
             this.splitContainer11.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.splitContainer11.Location = new System.Drawing.Point(3, 591);
-            this.splitContainer11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainer11.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer11.Name = "splitContainer11";
             // 
             // splitContainer11.Panel1
@@ -164,7 +164,7 @@ namespace ShoppingSystem
             // 
             this.LagerAddButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LagerAddButton.Location = new System.Drawing.Point(0, 0);
-            this.LagerAddButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LagerAddButton.Margin = new System.Windows.Forms.Padding(4);
             this.LagerAddButton.Name = "LagerAddButton";
             this.LagerAddButton.Size = new System.Drawing.Size(296, 74);
             this.LagerAddButton.TabIndex = 0;
@@ -176,7 +176,7 @@ namespace ShoppingSystem
             // 
             this.LagerCancelButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LagerCancelButton.Location = new System.Drawing.Point(0, 0);
-            this.LagerCancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LagerCancelButton.Margin = new System.Windows.Forms.Padding(4);
             this.LagerCancelButton.Name = "LagerCancelButton";
             this.LagerCancelButton.Size = new System.Drawing.Size(347, 74);
             this.LagerCancelButton.TabIndex = 0;
@@ -221,6 +221,46 @@ namespace ShoppingSystem
             this.TypeTextBox.Name = "TypeTextBox";
             this.TypeTextBox.Size = new System.Drawing.Size(493, 45);
             this.TypeTextBox.TabIndex = 0;
+            // 
+            // splitContainer12
+            // 
+            this.splitContainer12.Location = new System.Drawing.Point(12, 540);
+            this.splitContainer12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.splitContainer12.Name = "splitContainer12";
+            // 
+            // splitContainer12.Panel1
+            // 
+            this.splitContainer12.Panel1.Controls.Add(this.statuslabel);
+            this.splitContainer12.Panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // splitContainer12.Panel2
+            // 
+            this.splitContainer12.Panel2.Controls.Add(this.StatusTextBox);
+            this.splitContainer12.Size = new System.Drawing.Size(635, 47);
+            this.splitContainer12.SplitterDistance = 140;
+            this.splitContainer12.TabIndex = 2;
+            // 
+            // statuslabel
+            // 
+            this.statuslabel.AutoSize = true;
+            this.statuslabel.BackColor = System.Drawing.SystemColors.Control;
+            this.statuslabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statuslabel.Location = new System.Drawing.Point(0, 0);
+            this.statuslabel.Name = "statuslabel";
+            this.statuslabel.Size = new System.Drawing.Size(104, 32);
+            this.statuslabel.TabIndex = 1;
+            this.statuslabel.Text = "Status:";
+            this.statuslabel.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // StatusTextBox
+            // 
+            this.StatusTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.StatusTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusTextBox.Location = new System.Drawing.Point(0, 0);
+            this.StatusTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.StatusTextBox.Name = "StatusTextBox";
+            this.StatusTextBox.Size = new System.Drawing.Size(491, 45);
+            this.StatusTextBox.TabIndex = 0;
             // 
             // splitContainer10
             // 
@@ -574,46 +614,6 @@ namespace ShoppingSystem
             this.NameTextBox.Size = new System.Drawing.Size(485, 45);
             this.NameTextBox.TabIndex = 0;
             // 
-            // splitContainer12
-            // 
-            this.splitContainer12.Location = new System.Drawing.Point(12, 540);
-            this.splitContainer12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.splitContainer12.Name = "splitContainer12";
-            // 
-            // splitContainer12.Panel1
-            // 
-            this.splitContainer12.Panel1.Controls.Add(this.statuslabel);
-            this.splitContainer12.Panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
-            // splitContainer12.Panel2
-            // 
-            this.splitContainer12.Panel2.Controls.Add(this.StatusTextBox);
-            this.splitContainer12.Size = new System.Drawing.Size(635, 47);
-            this.splitContainer12.SplitterDistance = 140;
-            this.splitContainer12.TabIndex = 2;
-            // 
-            // statuslabel
-            // 
-            this.statuslabel.AutoSize = true;
-            this.statuslabel.BackColor = System.Drawing.SystemColors.Control;
-            this.statuslabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.statuslabel.Location = new System.Drawing.Point(0, 0);
-            this.statuslabel.Name = "statuslabel";
-            this.statuslabel.Size = new System.Drawing.Size(104, 32);
-            this.statuslabel.TabIndex = 1;
-            this.statuslabel.Text = "Status:";
-            this.statuslabel.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // StatusTextBox
-            // 
-            this.StatusTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.StatusTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StatusTextBox.Location = new System.Drawing.Point(0, 0);
-            this.StatusTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.StatusTextBox.Name = "StatusTextBox";
-            this.StatusTextBox.Size = new System.Drawing.Size(491, 45);
-            this.StatusTextBox.TabIndex = 0;
-            // 
             // addProductLager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -637,6 +637,12 @@ namespace ShoppingSystem
             this.splitContainer9.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer9)).EndInit();
             this.splitContainer9.ResumeLayout(false);
+            this.splitContainer12.Panel1.ResumeLayout(false);
+            this.splitContainer12.Panel1.PerformLayout();
+            this.splitContainer12.Panel2.ResumeLayout(false);
+            this.splitContainer12.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer12)).EndInit();
+            this.splitContainer12.ResumeLayout(false);
             this.splitContainer10.Panel1.ResumeLayout(false);
             this.splitContainer10.Panel1.PerformLayout();
             this.splitContainer10.Panel2.ResumeLayout(false);
@@ -691,12 +697,6 @@ namespace ShoppingSystem
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.splitContainer12.Panel1.ResumeLayout(false);
-            this.splitContainer12.Panel1.PerformLayout();
-            this.splitContainer12.Panel2.ResumeLayout(false);
-            this.splitContainer12.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer12)).EndInit();
-            this.splitContainer12.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

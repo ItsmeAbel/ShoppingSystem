@@ -88,6 +88,7 @@ namespace ShoppingSystem
             this.ProduktLista.Name = "ProduktLista";
             this.ProduktLista.Size = new System.Drawing.Size(800, 452);
             this.ProduktLista.TabIndex = 5;
+            this.ProduktLista.SelectedIndexChanged += new System.EventHandler(this.ProduktLista_SelectedIndexChanged);
             // 
             // ListLabel
             // 

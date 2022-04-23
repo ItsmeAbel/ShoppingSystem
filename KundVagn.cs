@@ -16,5 +16,10 @@ namespace ShoppingSystem
         {
             InitializeComponent();
         }
+
+        private void ProduktLista_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

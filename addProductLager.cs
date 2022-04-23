@@ -26,22 +26,51 @@ namespace ShoppingSystem
         private void button1_Click(object sender, EventArgs e)
         {
             plist = new ProductList();
-            plist.id = Int32.Parse(IDTextBox.Text);
-            plist.name = IDTextBox.Text;
-            plist.price = Int32.Parse(PriceTextBox.Text);
-            plist.type = TypeTextBox.Text;
-            plist.author = AuthorTextBox.Text;
-            plist.genre = GenreTextBox.Text;
-            plist.format = FormatTextBox.Text;
-            plist.language = LanguageTextBox.Text;
-            plist.platform = PlatformTextBox.Text;
-            plist.playtime = Int32.Parse(PlaytimeTextBox.Text);
-            plist.status = Int32.Parse(StatusTextBox.Text);
+            try
+            {
+                plist.name = NameTextBox.Text;
+                plist.type = TypeTextBox.Text;
+                plist.author = AuthorTextBox.Text;
+                plist.genre = GenreTextBox.Text;
+                plist.format = FormatTextBox.Text;
+                plist.language = LanguageTextBox.Text;
+                plist.platform = PlatformTextBox.Text;
 
+                plist.id = Int32.Parse(IDTextBox.Text);
+                plist.price = Int32.Parse(PriceTextBox.Text);
+                plist.playtime = Int32.Parse(PlaytimeTextBox.Text);
+                plist.status = Int32.Parse(StatusTextBox.Text);
+                if (plist.id != Math.Abs(plist.id) || plist.price != Math.Abs(plist.price) 
+                    || plist.playtime != Math.Abs(plist.price) || plist.status != Math.Abs(plist.price)) //jämför värden med dess absolut värde för att avgöra om talen innehåller negativa tal
+                {
+                    DialogResult = DialogResult.No;
+                }
+                else if (plist.type.Any(char.IsDigit) || plist.name.Any(char.IsDigit)
+                        || plist.author.Any(char.IsDigit) || plist.genre.Any(char.IsDigit)
+                        || plist.format.Any(char.IsDigit) || plist.language.Any(char.IsDigit) || plist.platform.Any(char.IsDigit)) //kollar ifall någon av string variabeln innehåller tal
+                {
+                    DialogResult = DialogResult.No;
+                }
+                else
+                {
+                    DialogResult = DialogResult.OK;
+                }
+                    
+            }
+            catch
+            {
+                DialogResult = DialogResult.Cancel;
+
+            }
+            
+
+
+            
            /* backend.addToBasket(Int32.Parse(IDTextBox.Text), NameTextBox.Text, Int32.Parse(PriceTextBox.Text), TypeTextBox.Text,
             AuthorTextBox.Text, GenreTextBox.Text, FormatTextBox.Text,
                 LanguageTextBox.Text, PlatformTextBox.Text, Int32.Parse(PlaytimeTextBox.Text));*/
-            DialogResult = DialogResult.OK;
+
+            
             Close();
         }
 
