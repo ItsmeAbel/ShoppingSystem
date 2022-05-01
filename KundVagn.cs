@@ -12,14 +12,34 @@ namespace ShoppingSystem
 {
     public partial class KundVagn : Form
     {
-        public KundVagn()
+        //List<ProductList> productlist;
+
+        BindingList<ProductList> vagnProductList;
+        BindingSource vagnproductListSource;
+        public KundVagn(List<ProductList> plist)
         {
             InitializeComponent();
+            vagnProductList = new BindingList<ProductList>(plist);
+            vagnproductListSource = new BindingSource();
+            vagnproductListSource.DataSource = vagnProductList;
+            kundvagndataGridView.DataSource = vagnproductListSource;
         }
 
         private void ProduktLista_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void KVRemoveButton_Click(object sender, EventArgs e)
+        {
+            vagnProductList.Clear();
+            this.Close();
+        }
+
+        private void ContinueButton_Click(object sender, EventArgs e)
+        {
+            vagnProductList.Clear();
+            DialogResult = DialogResult.OK;
         }
     }
 }

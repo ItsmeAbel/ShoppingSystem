@@ -29,6 +29,7 @@ namespace ShoppingSystem
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainShop));
             this.KassaButton = new System.Windows.Forms.Button();
             this.LagerButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -63,9 +64,13 @@ namespace ShoppingSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlText;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(499, 596);
             this.Controls.Add(this.LagerButton);
             this.Controls.Add(this.KassaButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(517, 643);
             this.MinimumSize = new System.Drawing.Size(517, 643);
             this.Name = "MainShop";
             this.Text = "MainShopForm";

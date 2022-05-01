@@ -10,9 +10,12 @@ using System.Windows.Forms;
 
 namespace ShoppingSystem
 {
-    public partial class Grossit : Form
+    public partial class AmountForm : Form
     {
-        public Grossit()
+
+        //internal ProductList plist { get; private set; }
+        public string amount2 { get; set; }
+        public AmountForm()
         {
             InitializeComponent();
         }
@@ -31,7 +34,26 @@ namespace ShoppingSystem
 
         private void orderButton_Click(object sender, EventArgs e)
         {
+            
+            if (antalComboBox.SelectedItem != null)
+            {
+                string item = antalComboBox.SelectedItem.ToString();
 
+                amount2 = item;
+
+              DialogResult = DialogResult.OK;
+
+            }
+            else
+            {
+                DialogResult = DialogResult.No;
+            }
+
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

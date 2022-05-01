@@ -15,8 +15,6 @@ namespace ShoppingSystem
     {
         BackendPart backend = new BackendPart();
 
-        
-       
         BindingList<ProductList> lagerProductList;
         BindingSource productListSource;
         public LagerForm()
@@ -31,7 +29,7 @@ namespace ShoppingSystem
 
         private void ContinueButtton_Click(object sender, EventArgs e)
         {
-            
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -39,11 +37,20 @@ namespace ShoppingSystem
             if (productDatalistLager.SelectedRows.Count < 1)
                 return;
             var product = (ProductList)productDatalistLager.SelectedRows[0].DataBoundItem;
-            Grossit grossit = new Grossit();
+            AmountForm grossit = new AmountForm();
             grossit.StartPosition = FormStartPosition.CenterParent;
-            grossit.Show();
+            //grossit.Show();
+            using (AmountForm antal = new AmountForm())
+            {
+                if (grossit.ShowDialog() == DialogResult.OK)
+                {
+                    product.status = product.status + int.Parse(grossit.amount2);
+                    backend.saveToCSV(lagerProductList);
+                }
 
-        }
+                }
+
+            }
 
         private void addToLagerButton_Click(object sender, EventArgs e)
         {
@@ -52,7 +59,6 @@ namespace ShoppingSystem
             //form.Show();
             if (form.ShowDialog() == DialogResult.OK)
             {
-
                 Console.WriteLine("{0}", backend.idcheck(form.plist.id));
                 if (backend.idcheck(form.plist.id) == true)
                 {
@@ -90,10 +96,9 @@ namespace ShoppingSystem
             {
                 productListSource.Remove(product);
                 backend.saveToCSV(lagerProductList);
-
             }
             else {
-                DialogResult dialogResult = MessageBox.Show("Vill du verkligen ta bort varan?", "Vran finns i lager!", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Vill du verkligen ta bort varan?", "Varan finns i lager!", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     productListSource.Remove(product);
@@ -101,7 +106,9 @@ namespace ShoppingSystem
                 }
                 else if (dialogResult == DialogResult.No)
                 {
+                    
                     //gör inget
+
                 }
             }
 

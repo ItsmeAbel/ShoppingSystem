@@ -2,20 +2,6 @@
 {
     public class ProductList
     {
-       /* public ProductList(int iid, string nname, int pprice, string ttype, string aauthor,
-            string ggenre, string fformat, string llanguage, string pplatform, int pplaytime)
-        {
-            id = iid;
-            name = nname;
-            price = pprice;
-            type = ttype;
-            author = aauthor;
-            genre = ggenre;
-            format = fformat;
-            language = llanguage;
-            platform = pplatform;
-            playtime = pplaytime;
-        }*/
 
         public int id { get; set; }
         public string name { get; set; }

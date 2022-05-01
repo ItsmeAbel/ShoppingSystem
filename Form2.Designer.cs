@@ -1,7 +1,7 @@
 ﻿
 namespace ShoppingSystem
 {
-    partial class Grossit
+    partial class AmountForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,11 +30,11 @@ namespace ShoppingSystem
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.antalComboBox = new System.Windows.Forms.ComboBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.orderButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.antalComboBox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -53,26 +53,6 @@ namespace ShoppingSystem
             this.groupBox1.Size = new System.Drawing.Size(455, 125);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(172, 32);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Antall Nya: ";
-            // 
-            // antalComboBox
-            // 
-            this.antalComboBox.CausesValidation = false;
-            this.antalComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.antalComboBox.Location = new System.Drawing.Point(171, 21);
-            this.antalComboBox.Name = "antalComboBox";
-            this.antalComboBox.Size = new System.Drawing.Size(272, 24);
-            this.antalComboBox.TabIndex = 1;
             // 
             // splitContainer1
             // 
@@ -98,7 +78,7 @@ namespace ShoppingSystem
             this.orderButton.Name = "orderButton";
             this.orderButton.Size = new System.Drawing.Size(220, 50);
             this.orderButton.TabIndex = 0;
-            this.orderButton.Text = "Beställ";
+            this.orderButton.Text = "OK";
             this.orderButton.UseVisualStyleBackColor = true;
             this.orderButton.Click += new System.EventHandler(this.orderButton_Click);
             // 
@@ -111,16 +91,36 @@ namespace ShoppingSystem
             this.cancelButton.TabIndex = 0;
             this.cancelButton.Text = "Avbryt";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // Grossit
+            // antalComboBox
+            // 
+            this.antalComboBox.CausesValidation = false;
+            this.antalComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.antalComboBox.Location = new System.Drawing.Point(115, 21);
+            this.antalComboBox.Name = "antalComboBox";
+            this.antalComboBox.Size = new System.Drawing.Size(328, 24);
+            this.antalComboBox.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(111, 32);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Antall: ";
+            // 
+            // AmountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(455, 125);
             this.Controls.Add(this.groupBox1);
             this.MinimumSize = new System.Drawing.Size(473, 172);
-            this.Name = "Grossit";
-            this.Text = "Grossit Leverans";
+            this.Name = "AmountForm";
+            this.Text = "Antal Mängd";
             this.Load += new System.EventHandler(this.Grossit_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -29,6 +29,7 @@ namespace ShoppingSystem
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KassaForm));
             this.ListLabel = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.Add = new System.Windows.Forms.Button();
@@ -53,7 +54,7 @@ namespace ShoppingSystem
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 455);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 667);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -63,8 +64,8 @@ namespace ShoppingSystem
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.KundKorgButton);
-            this.splitContainer1.Size = new System.Drawing.Size(724, 83);
-            this.splitContainer1.SplitterDistance = 332;
+            this.splitContainer1.Size = new System.Drawing.Size(1484, 83);
+            this.splitContainer1.SplitterDistance = 597;
             this.splitContainer1.TabIndex = 3;
             // 
             // Add
@@ -72,9 +73,9 @@ namespace ShoppingSystem
             this.Add.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Add.Location = new System.Drawing.Point(0, 0);
             this.Add.Name = "Add";
-            this.Add.Size = new System.Drawing.Size(332, 83);
+            this.Add.Size = new System.Drawing.Size(597, 83);
             this.Add.TabIndex = 4;
-            this.Add.Text = "Lägg TIll";
+            this.Add.Text = "Köp";
             this.Add.UseVisualStyleBackColor = true;
             this.Add.Click += new System.EventHandler(this.Add_Click);
             // 
@@ -83,33 +84,44 @@ namespace ShoppingSystem
             this.KundKorgButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.KundKorgButton.Location = new System.Drawing.Point(0, 0);
             this.KundKorgButton.Name = "KundKorgButton";
-            this.KundKorgButton.Size = new System.Drawing.Size(388, 83);
+            this.KundKorgButton.Size = new System.Drawing.Size(883, 83);
             this.KundKorgButton.TabIndex = 4;
-            this.KundKorgButton.Text = "Visa Kundkorg";
+            this.KundKorgButton.Text = "Kundkorg";
             this.KundKorgButton.UseVisualStyleBackColor = true;
             this.KundKorgButton.Click += new System.EventHandler(this.button2_Click);
             // 
             // productDatalistKassa
             // 
+            this.productDatalistKassa.AllowUserToAddRows = false;
+            this.productDatalistKassa.AllowUserToDeleteRows = false;
+            this.productDatalistKassa.AllowUserToResizeColumns = false;
+            this.productDatalistKassa.AllowUserToResizeRows = false;
             this.productDatalistKassa.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.productDatalistKassa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.productDatalistKassa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.productDatalistKassa.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.productDatalistKassa.Location = new System.Drawing.Point(0, 33);
+            this.productDatalistKassa.MultiSelect = false;
             this.productDatalistKassa.Name = "productDatalistKassa";
+            this.productDatalistKassa.ReadOnly = true;
+            this.productDatalistKassa.RowHeadersVisible = false;
             this.productDatalistKassa.RowHeadersWidth = 51;
             this.productDatalistKassa.RowTemplate.Height = 24;
-            this.productDatalistKassa.Size = new System.Drawing.Size(724, 422);
+            this.productDatalistKassa.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.productDatalistKassa.Size = new System.Drawing.Size(1484, 634);
             this.productDatalistKassa.TabIndex = 4;
             // 
             // KassaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(724, 538);
+            this.ClientSize = new System.Drawing.Size(1484, 750);
             this.Controls.Add(this.productDatalistKassa);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.ListLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(742, 585);
             this.Name = "KassaForm";
             this.Text = "KassaForm";
