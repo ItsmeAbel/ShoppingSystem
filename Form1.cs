@@ -24,6 +24,7 @@ namespace ShoppingSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //opens the checkout form
             KassaForm form = new KassaForm();
             form.Show();
         }
