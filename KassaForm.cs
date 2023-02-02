@@ -12,7 +12,7 @@ namespace ShoppingSystem
 {
     public partial class KassaForm : Form
     {
-        private int returncheck = 0;
+        //private int returncheck = 0;
 
         List<ProductList> vagnlist;
         BackendPart backend = new BackendPart();
@@ -23,7 +23,17 @@ namespace ShoppingSystem
         {
             InitializeComponent();
             vagnlist = new List<ProductList>();
-            kassaProductList = new BindingList<ProductList>(backend.loadList());
+            try
+            {
+                kassaProductList = new BindingList<ProductList>(backend.loadList());
+
+
+            }
+            catch
+            {
+
+
+            }
             productListSource = new BindingSource();
             productListSource.DataSource = kassaProductList;
             productDatalistKassa.DataSource = productListSource;

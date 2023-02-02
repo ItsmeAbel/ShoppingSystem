@@ -8,6 +8,7 @@ using CsvHelper;
 using System.Globalization;
 using CsvHelper.Configuration;
 
+
 namespace ShoppingSystem
 {
     class BackendPart
@@ -15,6 +16,9 @@ namespace ShoppingSystem
 
         List<ProductList> productlist;
 
+        //string currDir = Directory.GetCurrentDirectory();
+        string path = Path.Combine(Directory.GetCurrentDirectory(), @"\products.csv");
+        //string relativepath = @"..\..\..\..\..\products.csv";
         public BackendPart()
         {
             
@@ -24,13 +28,16 @@ namespace ShoppingSystem
 
         public List<ProductList> loadList()
         {
-            using (var reader = new StreamReader("products.csv")) //Easy solution for a relative path. Can't beleve i spent 2 hours on this just to find out this is the solution. smh
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-            {
-                productlist = csv.GetRecords<ProductList>().ToList();
+            Console.WriteLine("The path is" + Directory.GetCurrentDirectory());
+            using (var reader = new StreamReader(Directory.GetCurrentDirectory() + "\\products.csv")) //Easy solution for a relative path. Can't beleve i spent 2 hours on this just to find out this is the solution. smh
+                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                {
+                    productlist = csv.GetRecords<ProductList>().ToList();
 
-            }
-            return productlist;
+                }
+                return productlist;
+            
+
         }
 
         public void addToBasket(int iid, string nname, int pprice, 
@@ -91,8 +98,6 @@ namespace ShoppingSystem
             }
 
         }
-
-
 
     }
 }

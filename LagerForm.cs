@@ -21,7 +21,16 @@ namespace ShoppingSystem
         {
             InitializeComponent();
             //List<ProductList> locallist = backend.loadList();
-            lagerProductList = new BindingList<ProductList>(backend.loadList());
+            try
+            {
+                lagerProductList = new BindingList<ProductList>(backend.loadList());
+
+            }
+            catch
+            {
+
+
+            }
             productListSource = new BindingSource();
             productListSource.DataSource = lagerProductList;
             productDatalistLager.DataSource = productListSource;
@@ -54,28 +63,38 @@ namespace ShoppingSystem
 
         private void addToLagerButton_Click(object sender, EventArgs e)
         {
-            addProductLager form = new addProductLager();
-            form.StartPosition = FormStartPosition.CenterParent;
-            //form.Show();
-            if (form.ShowDialog() == DialogResult.OK)
+            try
             {
-                Console.WriteLine("{0}", backend.idcheck(form.plist.id));
-                if (backend.idcheck(form.plist.id) == true)
+                addProductLager form = new addProductLager();
+                form.StartPosition = FormStartPosition.CenterParent;
+                //form.Show();
+                if (form.ShowDialog() == DialogResult.OK)
                 {
+                    Console.WriteLine("{0}", backend.idcheck(form.plist.id));
+                    if (backend.idcheck(form.plist.id) == true)
+                    {
+                        MessageBox.Show("Varunummer är redan taget, vänligen ange korrekt varunummer!");
+                    }
+                    else
+                    {
+                        productListSource.Add(form.plist);
+                        backend.saveToCSV(lagerProductList);
+                    }
 
-                    MessageBox.Show("Varunummer är redan taget, vänligen ange korrekt varunummer!");
                 }
-                else {
-                    productListSource.Add(form.plist);
-                    backend.saveToCSV(lagerProductList);
-                 }
+                else
+                {
+                    MessageBox.Show("Något är fel!");
+
+                }
 
             }
-            else
+            catch
             {
-                MessageBox.Show("Något är fel!");
+
 
             }
+
             
             //updateList();
         }

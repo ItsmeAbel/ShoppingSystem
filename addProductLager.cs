@@ -78,5 +78,10 @@ namespace ShoppingSystem
         {
             this.Close();
         }
+
+        private void TypeTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
