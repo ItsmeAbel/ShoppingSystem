@@ -41,6 +41,7 @@ namespace ShoppingSystem
             this.Close();
         }
 
+        //Grossit button handle
         private void button1_Click(object sender, EventArgs e)
         {
             if (productDatalistLager.SelectedRows.Count < 1)
@@ -55,6 +56,7 @@ namespace ShoppingSystem
                 {
                     product.status = product.status + int.Parse(grossit.amount2);
                     backend.saveToCSV(lagerProductList);
+                    productListSource.ResetBindings(false); //updates the list
                 }
 
                 }
@@ -73,7 +75,7 @@ namespace ShoppingSystem
                     Console.WriteLine("{0}", backend.idcheck(form.plist.id));
                     if (backend.idcheck(form.plist.id) == true)
                     {
-                        MessageBox.Show("Varunummer är redan taget, vänligen ange korrekt varunummer!");
+                        MessageBox.Show("ID redan finns, vänligen ange rätt ID nummer!");
                     }
                     else
                     {
@@ -84,7 +86,7 @@ namespace ShoppingSystem
                 }
                 else
                 {
-                    MessageBox.Show("Något är fel!");
+                    MessageBox.Show("Något stämmer ej!");
 
                 }
 
@@ -97,13 +99,6 @@ namespace ShoppingSystem
 
             
             //updateList();
-        }
-
-        public void updateList()
-        {
-            productListSource.DataSource = lagerProductList;
-            productDatalistLager.DataSource = productListSource;
-            
         }
 
         private void RemoveButton_Click(object sender, EventArgs e)

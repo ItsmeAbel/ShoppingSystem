@@ -67,7 +67,7 @@ namespace ShoppingSystem
             this.KVRemoveButton.Name = "KVRemoveButton";
             this.KVRemoveButton.Size = new System.Drawing.Size(710, 74);
             this.KVRemoveButton.TabIndex = 4;
-            this.KVRemoveButton.Text = "Avbryt";
+            this.KVRemoveButton.Text = "Avbryt Köp";
             this.KVRemoveButton.UseVisualStyleBackColor = true;
             this.KVRemoveButton.Click += new System.EventHandler(this.KVRemoveButton_Click);
             // 

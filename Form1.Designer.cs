@@ -39,11 +39,12 @@ namespace ShoppingSystem
             this.KassaButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.KassaButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.KassaButton.Location = new System.Drawing.Point(176, 105);
             this.KassaButton.Name = "KassaButton";
             this.KassaButton.Size = new System.Drawing.Size(111, 100);
             this.KassaButton.TabIndex = 0;
-            this.KassaButton.Text = "Till Kassa";
+            this.KassaButton.Text = "Kassa";
             this.KassaButton.UseVisualStyleBackColor = true;
             this.KassaButton.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -64,11 +65,12 @@ namespace ShoppingSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlText;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackColor = System.Drawing.SystemColors.Desktop;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(499, 596);
             this.Controls.Add(this.LagerButton);
             this.Controls.Add(this.KassaButton);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(517, 643);
             this.MinimumSize = new System.Drawing.Size(517, 643);

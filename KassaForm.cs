@@ -26,12 +26,9 @@ namespace ShoppingSystem
             try
             {
                 kassaProductList = new BindingList<ProductList>(backend.loadList());
-
-
             }
             catch
             {
-
 
             }
             productListSource = new BindingSource();
@@ -44,6 +41,7 @@ namespace ShoppingSystem
 
         }
 
+        //opens the shopping cart
         private void button2_Click(object sender, EventArgs e)
         {  
             KundVagn vagnform = new KundVagn(vagnlist); //sends the new list to the form as a parameter
@@ -51,8 +49,8 @@ namespace ShoppingSystem
             //vagnform.Show();
             if (vagnform.ShowDialog() == DialogResult.OK)
             {
-
-                backend.saveToCSV(kassaProductList);
+                //backend.saveToCSV(kassaProductList);
+                productListSource.ResetBindings(false);
             }
             else
             {
@@ -62,6 +60,7 @@ namespace ShoppingSystem
                 productListSource.DataSource = kassaProductList;
                 productDatalistKassa.DataSource = productListSource;
             }
+            productListSource.ResetBindings(false);
             
         }
 
@@ -81,12 +80,8 @@ namespace ShoppingSystem
                     }
                     else
                     {
-                        productListSource.Clear();
-                        kassaProductList = new BindingList<ProductList>(backend.loadList());
-                        productListSource.DataSource = kassaProductList;
-                        productDatalistKassa.DataSource = productListSource;
                         product.status = product.status - int.Parse(antal.amount2); //updates the product status
-                       
+                        productListSource.ResetBindings(false);
                         //adds the product to the basket
                         List<ProductList> newlist;
                         newlist = new List<ProductList>

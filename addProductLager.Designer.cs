@@ -30,41 +30,41 @@ namespace ShoppingSystem
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.NameTextBox = new System.Windows.Forms.TextBox();
             this.NameLabel = new System.Windows.Forms.Label();
+            this.NameTextBox = new System.Windows.Forms.TextBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.IDTextBox = new System.Windows.Forms.TextBox();
             this.IDLabel = new System.Windows.Forms.Label();
+            this.IDTextBox = new System.Windows.Forms.TextBox();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
-            this.FormatTextBox = new System.Windows.Forms.TextBox();
             this.FormatLabel = new System.Windows.Forms.Label();
+            this.FormatTextBox = new System.Windows.Forms.TextBox();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.AuthorTextBox = new System.Windows.Forms.TextBox();
             this.AuthorLabel = new System.Windows.Forms.Label();
+            this.AuthorTextBox = new System.Windows.Forms.TextBox();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
-            this.GenreTextBox = new System.Windows.Forms.TextBox();
             this.GenreLabel = new System.Windows.Forms.Label();
+            this.GenreTextBox = new System.Windows.Forms.TextBox();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.PriceTextBox = new System.Windows.Forms.TextBox();
             this.PriceLabel = new System.Windows.Forms.Label();
+            this.PriceTextBox = new System.Windows.Forms.TextBox();
             this.splitContainer7 = new System.Windows.Forms.SplitContainer();
-            this.PlatformTextBox = new System.Windows.Forms.TextBox();
             this.PlatformLabel = new System.Windows.Forms.Label();
+            this.PlatformTextBox = new System.Windows.Forms.TextBox();
             this.splitContainer8 = new System.Windows.Forms.SplitContainer();
-            this.LanguageTextBox = new System.Windows.Forms.TextBox();
             this.LanguageLabel = new System.Windows.Forms.Label();
+            this.LanguageTextBox = new System.Windows.Forms.TextBox();
             this.splitContainer10 = new System.Windows.Forms.SplitContainer();
-            this.PlaytimeTextBox = new System.Windows.Forms.TextBox();
             this.PlaytimeLabel = new System.Windows.Forms.Label();
+            this.PlaytimeTextBox = new System.Windows.Forms.TextBox();
             this.splitContainer12 = new System.Windows.Forms.SplitContainer();
-            this.StatusTextBox = new System.Windows.Forms.TextBox();
             this.statuslabel = new System.Windows.Forms.Label();
+            this.StatusTextBox = new System.Windows.Forms.TextBox();
             this.splitContainer9 = new System.Windows.Forms.SplitContainer();
-            this.TypeTextBox = new System.Windows.Forms.TextBox();
             this.TypeLabel = new System.Windows.Forms.Label();
+            this.TypeTextBox = new System.Windows.Forms.TextBox();
             this.splitContainer11 = new System.Windows.Forms.SplitContainer();
-            this.LagerCancelButton = new System.Windows.Forms.Button();
             this.LagerAddButton = new System.Windows.Forms.Button();
+            this.LagerCancelButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -133,17 +133,8 @@ namespace ShoppingSystem
             this.splitContainer1.Panel2.Controls.Add(this.NameTextBox);
             this.splitContainer1.Size = new System.Drawing.Size(635, 47);
             this.splitContainer1.SplitterDistance = 146;
-            this.splitContainer1.TabIndex = 100;
-            // 
-            // NameTextBox
-            // 
-            this.NameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NameTextBox.Location = new System.Drawing.Point(0, 0);
-            this.NameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(485, 45);
-            this.NameTextBox.TabIndex = 0;
+            this.splitContainer1.TabIndex = 1;
+            this.splitContainer1.TabStop = false;
             // 
             // NameLabel
             // 
@@ -154,6 +145,16 @@ namespace ShoppingSystem
             this.NameLabel.Size = new System.Drawing.Size(98, 32);
             this.NameLabel.TabIndex = 100;
             this.NameLabel.Text = "Name:";
+            // 
+            // NameTextBox
+            // 
+            this.NameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NameTextBox.Location = new System.Drawing.Point(0, 0);
+            this.NameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.NameTextBox.Name = "NameTextBox";
+            this.NameTextBox.Size = new System.Drawing.Size(485, 45);
+            this.NameTextBox.TabIndex = 1;
             // 
             // splitContainer2
             // 
@@ -171,17 +172,8 @@ namespace ShoppingSystem
             this.splitContainer2.Panel2.Controls.Add(this.IDTextBox);
             this.splitContainer2.Size = new System.Drawing.Size(635, 47);
             this.splitContainer2.SplitterDistance = 146;
-            this.splitContainer2.TabIndex = 100;
-            // 
-            // IDTextBox
-            // 
-            this.IDTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.IDTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IDTextBox.Location = new System.Drawing.Point(0, 0);
-            this.IDTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.IDTextBox.Name = "IDTextBox";
-            this.IDTextBox.Size = new System.Drawing.Size(485, 45);
-            this.IDTextBox.TabIndex = 0;
+            this.splitContainer2.TabIndex = 0;
+            this.splitContainer2.TabStop = false;
             // 
             // IDLabel
             // 
@@ -194,6 +186,16 @@ namespace ShoppingSystem
             this.IDLabel.TabIndex = 100;
             this.IDLabel.Text = "ID:";
             this.IDLabel.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // IDTextBox
+            // 
+            this.IDTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.IDTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IDTextBox.Location = new System.Drawing.Point(0, 0);
+            this.IDTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.IDTextBox.Name = "IDTextBox";
+            this.IDTextBox.Size = new System.Drawing.Size(485, 45);
+            this.IDTextBox.TabIndex = 0;
             // 
             // splitContainer5
             // 
@@ -211,17 +213,8 @@ namespace ShoppingSystem
             this.splitContainer5.Panel2.Controls.Add(this.FormatTextBox);
             this.splitContainer5.Size = new System.Drawing.Size(635, 47);
             this.splitContainer5.SplitterDistance = 145;
-            this.splitContainer5.TabIndex = 100;
-            // 
-            // FormatTextBox
-            // 
-            this.FormatTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FormatTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormatTextBox.Location = new System.Drawing.Point(0, 0);
-            this.FormatTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.FormatTextBox.Name = "FormatTextBox";
-            this.FormatTextBox.Size = new System.Drawing.Size(486, 45);
-            this.FormatTextBox.TabIndex = 0;
+            this.splitContainer5.TabIndex = 6;
+            this.splitContainer5.TabStop = false;
             // 
             // FormatLabel
             // 
@@ -232,6 +225,16 @@ namespace ShoppingSystem
             this.FormatLabel.Size = new System.Drawing.Size(104, 32);
             this.FormatLabel.TabIndex = 100;
             this.FormatLabel.Text = "Format";
+            // 
+            // FormatTextBox
+            // 
+            this.FormatTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FormatTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormatTextBox.Location = new System.Drawing.Point(0, 0);
+            this.FormatTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.FormatTextBox.Name = "FormatTextBox";
+            this.FormatTextBox.Size = new System.Drawing.Size(486, 45);
+            this.FormatTextBox.TabIndex = 6;
             // 
             // splitContainer3
             // 
@@ -249,17 +252,8 @@ namespace ShoppingSystem
             this.splitContainer3.Panel2.Controls.Add(this.AuthorTextBox);
             this.splitContainer3.Size = new System.Drawing.Size(635, 47);
             this.splitContainer3.SplitterDistance = 145;
-            this.splitContainer3.TabIndex = 100;
-            // 
-            // AuthorTextBox
-            // 
-            this.AuthorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AuthorTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AuthorTextBox.Location = new System.Drawing.Point(0, 0);
-            this.AuthorTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.AuthorTextBox.Name = "AuthorTextBox";
-            this.AuthorTextBox.Size = new System.Drawing.Size(486, 45);
-            this.AuthorTextBox.TabIndex = 0;
+            this.splitContainer3.TabIndex = 4;
+            this.splitContainer3.TabStop = false;
             // 
             // AuthorLabel
             // 
@@ -270,6 +264,16 @@ namespace ShoppingSystem
             this.AuthorLabel.Size = new System.Drawing.Size(107, 32);
             this.AuthorLabel.TabIndex = 100;
             this.AuthorLabel.Text = "Author:";
+            // 
+            // AuthorTextBox
+            // 
+            this.AuthorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AuthorTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AuthorTextBox.Location = new System.Drawing.Point(0, 0);
+            this.AuthorTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AuthorTextBox.Name = "AuthorTextBox";
+            this.AuthorTextBox.Size = new System.Drawing.Size(486, 45);
+            this.AuthorTextBox.TabIndex = 4;
             // 
             // splitContainer6
             // 
@@ -287,17 +291,8 @@ namespace ShoppingSystem
             this.splitContainer6.Panel2.Controls.Add(this.GenreTextBox);
             this.splitContainer6.Size = new System.Drawing.Size(635, 47);
             this.splitContainer6.SplitterDistance = 144;
-            this.splitContainer6.TabIndex = 100;
-            // 
-            // GenreTextBox
-            // 
-            this.GenreTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GenreTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GenreTextBox.Location = new System.Drawing.Point(0, 0);
-            this.GenreTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.GenreTextBox.Name = "GenreTextBox";
-            this.GenreTextBox.Size = new System.Drawing.Size(487, 45);
-            this.GenreTextBox.TabIndex = 0;
+            this.splitContainer6.TabIndex = 5;
+            this.splitContainer6.TabStop = false;
             // 
             // GenreLabel
             // 
@@ -310,6 +305,16 @@ namespace ShoppingSystem
             this.GenreLabel.TabIndex = 100;
             this.GenreLabel.Text = "Genre:";
             this.GenreLabel.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // GenreTextBox
+            // 
+            this.GenreTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GenreTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GenreTextBox.Location = new System.Drawing.Point(0, 0);
+            this.GenreTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.GenreTextBox.Name = "GenreTextBox";
+            this.GenreTextBox.Size = new System.Drawing.Size(487, 45);
+            this.GenreTextBox.TabIndex = 5;
             // 
             // splitContainer4
             // 
@@ -327,17 +332,8 @@ namespace ShoppingSystem
             this.splitContainer4.Panel2.Controls.Add(this.PriceTextBox);
             this.splitContainer4.Size = new System.Drawing.Size(635, 47);
             this.splitContainer4.SplitterDistance = 147;
-            this.splitContainer4.TabIndex = 100;
-            // 
-            // PriceTextBox
-            // 
-            this.PriceTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PriceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PriceTextBox.Location = new System.Drawing.Point(0, 0);
-            this.PriceTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.PriceTextBox.Name = "PriceTextBox";
-            this.PriceTextBox.Size = new System.Drawing.Size(484, 45);
-            this.PriceTextBox.TabIndex = 0;
+            this.splitContainer4.TabIndex = 2;
+            this.splitContainer4.TabStop = false;
             // 
             // PriceLabel
             // 
@@ -350,6 +346,16 @@ namespace ShoppingSystem
             this.PriceLabel.TabIndex = 100;
             this.PriceLabel.Text = "Price:";
             this.PriceLabel.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // PriceTextBox
+            // 
+            this.PriceTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PriceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PriceTextBox.Location = new System.Drawing.Point(0, 0);
+            this.PriceTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PriceTextBox.Name = "PriceTextBox";
+            this.PriceTextBox.Size = new System.Drawing.Size(484, 45);
+            this.PriceTextBox.TabIndex = 2;
             // 
             // splitContainer7
             // 
@@ -367,17 +373,8 @@ namespace ShoppingSystem
             this.splitContainer7.Panel2.Controls.Add(this.PlatformTextBox);
             this.splitContainer7.Size = new System.Drawing.Size(635, 47);
             this.splitContainer7.SplitterDistance = 145;
-            this.splitContainer7.TabIndex = 100;
-            // 
-            // PlatformTextBox
-            // 
-            this.PlatformTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PlatformTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlatformTextBox.Location = new System.Drawing.Point(0, 0);
-            this.PlatformTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.PlatformTextBox.Name = "PlatformTextBox";
-            this.PlatformTextBox.Size = new System.Drawing.Size(486, 45);
-            this.PlatformTextBox.TabIndex = 0;
+            this.splitContainer7.TabIndex = 8;
+            this.splitContainer7.TabStop = false;
             // 
             // PlatformLabel
             // 
@@ -388,6 +385,16 @@ namespace ShoppingSystem
             this.PlatformLabel.Size = new System.Drawing.Size(129, 32);
             this.PlatformLabel.TabIndex = 100;
             this.PlatformLabel.Text = "Platform:";
+            // 
+            // PlatformTextBox
+            // 
+            this.PlatformTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PlatformTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlatformTextBox.Location = new System.Drawing.Point(0, 0);
+            this.PlatformTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PlatformTextBox.Name = "PlatformTextBox";
+            this.PlatformTextBox.Size = new System.Drawing.Size(486, 45);
+            this.PlatformTextBox.TabIndex = 8;
             // 
             // splitContainer8
             // 
@@ -405,17 +412,8 @@ namespace ShoppingSystem
             this.splitContainer8.Panel2.Controls.Add(this.LanguageTextBox);
             this.splitContainer8.Size = new System.Drawing.Size(635, 47);
             this.splitContainer8.SplitterDistance = 146;
-            this.splitContainer8.TabIndex = 100;
-            // 
-            // LanguageTextBox
-            // 
-            this.LanguageTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LanguageTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LanguageTextBox.Location = new System.Drawing.Point(0, 0);
-            this.LanguageTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.LanguageTextBox.Name = "LanguageTextBox";
-            this.LanguageTextBox.Size = new System.Drawing.Size(485, 45);
-            this.LanguageTextBox.TabIndex = 0;
+            this.splitContainer8.TabIndex = 7;
+            this.splitContainer8.TabStop = false;
             // 
             // LanguageLabel
             // 
@@ -428,6 +426,16 @@ namespace ShoppingSystem
             this.LanguageLabel.TabIndex = 100;
             this.LanguageLabel.Text = "Language:";
             this.LanguageLabel.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // LanguageTextBox
+            // 
+            this.LanguageTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LanguageTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LanguageTextBox.Location = new System.Drawing.Point(0, 0);
+            this.LanguageTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.LanguageTextBox.Name = "LanguageTextBox";
+            this.LanguageTextBox.Size = new System.Drawing.Size(485, 45);
+            this.LanguageTextBox.TabIndex = 7;
             // 
             // splitContainer10
             // 
@@ -445,17 +453,8 @@ namespace ShoppingSystem
             this.splitContainer10.Panel2.Controls.Add(this.PlaytimeTextBox);
             this.splitContainer10.Size = new System.Drawing.Size(635, 47);
             this.splitContainer10.SplitterDistance = 145;
-            this.splitContainer10.TabIndex = 100;
-            // 
-            // PlaytimeTextBox
-            // 
-            this.PlaytimeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PlaytimeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlaytimeTextBox.Location = new System.Drawing.Point(0, 0);
-            this.PlaytimeTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.PlaytimeTextBox.Name = "PlaytimeTextBox";
-            this.PlaytimeTextBox.Size = new System.Drawing.Size(486, 45);
-            this.PlaytimeTextBox.TabIndex = 0;
+            this.splitContainer10.TabIndex = 9;
+            this.splitContainer10.TabStop = false;
             // 
             // PlaytimeLabel
             // 
@@ -468,6 +467,16 @@ namespace ShoppingSystem
             this.PlaytimeLabel.TabIndex = 100;
             this.PlaytimeLabel.Text = "Playtime:";
             this.PlaytimeLabel.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // PlaytimeTextBox
+            // 
+            this.PlaytimeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PlaytimeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlaytimeTextBox.Location = new System.Drawing.Point(0, 0);
+            this.PlaytimeTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PlaytimeTextBox.Name = "PlaytimeTextBox";
+            this.PlaytimeTextBox.Size = new System.Drawing.Size(486, 45);
+            this.PlaytimeTextBox.TabIndex = 9;
             // 
             // splitContainer12
             // 
@@ -485,17 +494,8 @@ namespace ShoppingSystem
             this.splitContainer12.Panel2.Controls.Add(this.StatusTextBox);
             this.splitContainer12.Size = new System.Drawing.Size(635, 47);
             this.splitContainer12.SplitterDistance = 146;
-            this.splitContainer12.TabIndex = 100;
-            // 
-            // StatusTextBox
-            // 
-            this.StatusTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.StatusTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StatusTextBox.Location = new System.Drawing.Point(0, 0);
-            this.StatusTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.StatusTextBox.Name = "StatusTextBox";
-            this.StatusTextBox.Size = new System.Drawing.Size(485, 45);
-            this.StatusTextBox.TabIndex = 0;
+            this.splitContainer12.TabIndex = 10;
+            this.splitContainer12.TabStop = false;
             // 
             // statuslabel
             // 
@@ -508,6 +508,16 @@ namespace ShoppingSystem
             this.statuslabel.TabIndex = 100;
             this.statuslabel.Text = "Status:";
             this.statuslabel.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // StatusTextBox
+            // 
+            this.StatusTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.StatusTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusTextBox.Location = new System.Drawing.Point(0, 0);
+            this.StatusTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.StatusTextBox.Name = "StatusTextBox";
+            this.StatusTextBox.Size = new System.Drawing.Size(485, 45);
+            this.StatusTextBox.TabIndex = 10;
             // 
             // splitContainer9
             // 
@@ -525,18 +535,8 @@ namespace ShoppingSystem
             this.splitContainer9.Panel2.Controls.Add(this.TypeTextBox);
             this.splitContainer9.Size = new System.Drawing.Size(635, 47);
             this.splitContainer9.SplitterDistance = 144;
-            this.splitContainer9.TabIndex = 100;
-            // 
-            // TypeTextBox
-            // 
-            this.TypeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TypeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TypeTextBox.Location = new System.Drawing.Point(0, 0);
-            this.TypeTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TypeTextBox.Name = "TypeTextBox";
-            this.TypeTextBox.Size = new System.Drawing.Size(487, 45);
-            this.TypeTextBox.TabIndex = 0;
-            this.TypeTextBox.TextChanged += new System.EventHandler(this.TypeTextBox_TextChanged);
+            this.splitContainer9.TabIndex = 3;
+            this.splitContainer9.TabStop = false;
             // 
             // TypeLabel
             // 
@@ -547,6 +547,17 @@ namespace ShoppingSystem
             this.TypeLabel.Size = new System.Drawing.Size(86, 32);
             this.TypeLabel.TabIndex = 100;
             this.TypeLabel.Text = "Type:";
+            // 
+            // TypeTextBox
+            // 
+            this.TypeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TypeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TypeTextBox.Location = new System.Drawing.Point(0, 0);
+            this.TypeTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TypeTextBox.Name = "TypeTextBox";
+            this.TypeTextBox.Size = new System.Drawing.Size(487, 45);
+            this.TypeTextBox.TabIndex = 3;
+            this.TypeTextBox.TextChanged += new System.EventHandler(this.TypeTextBox_TextChanged);
             // 
             // splitContainer11
             // 
@@ -565,19 +576,8 @@ namespace ShoppingSystem
             this.splitContainer11.Size = new System.Drawing.Size(648, 74);
             this.splitContainer11.SplitterDistance = 296;
             this.splitContainer11.SplitterWidth = 5;
-            this.splitContainer11.TabIndex = 3;
-            // 
-            // LagerCancelButton
-            // 
-            this.LagerCancelButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LagerCancelButton.Location = new System.Drawing.Point(0, 0);
-            this.LagerCancelButton.Margin = new System.Windows.Forms.Padding(4);
-            this.LagerCancelButton.Name = "LagerCancelButton";
-            this.LagerCancelButton.Size = new System.Drawing.Size(347, 74);
-            this.LagerCancelButton.TabIndex = 0;
-            this.LagerCancelButton.Text = "Cancel";
-            this.LagerCancelButton.UseVisualStyleBackColor = true;
-            this.LagerCancelButton.Click += new System.EventHandler(this.LagerCancelButton_Click);
+            this.splitContainer11.TabIndex = 11;
+            this.splitContainer11.TabStop = false;
             // 
             // LagerAddButton
             // 
@@ -586,10 +586,22 @@ namespace ShoppingSystem
             this.LagerAddButton.Margin = new System.Windows.Forms.Padding(4);
             this.LagerAddButton.Name = "LagerAddButton";
             this.LagerAddButton.Size = new System.Drawing.Size(296, 74);
-            this.LagerAddButton.TabIndex = 0;
+            this.LagerAddButton.TabIndex = 11;
             this.LagerAddButton.Text = "Add";
             this.LagerAddButton.UseVisualStyleBackColor = true;
             this.LagerAddButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // LagerCancelButton
+            // 
+            this.LagerCancelButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LagerCancelButton.Location = new System.Drawing.Point(0, 0);
+            this.LagerCancelButton.Margin = new System.Windows.Forms.Padding(4);
+            this.LagerCancelButton.Name = "LagerCancelButton";
+            this.LagerCancelButton.Size = new System.Drawing.Size(347, 74);
+            this.LagerCancelButton.TabIndex = 12;
+            this.LagerCancelButton.Text = "Cancel";
+            this.LagerCancelButton.UseVisualStyleBackColor = true;
+            this.LagerCancelButton.Click += new System.EventHandler(this.LagerCancelButton_Click);
             // 
             // groupBox1
             // 
@@ -613,7 +625,6 @@ namespace ShoppingSystem
             this.groupBox1.Size = new System.Drawing.Size(654, 667);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
             // 
             // addProductLager
             // 
@@ -627,7 +638,7 @@ namespace ShoppingSystem
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(672, 714);
             this.Name = "addProductLager";
-            this.Text = "11";
+            this.Text = "Lägg Ny Produkt";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
