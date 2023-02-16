@@ -35,6 +35,9 @@ namespace ShoppingSystem
             this.Add = new System.Windows.Forms.Button();
             this.KundKorgButton = new System.Windows.Forms.Button();
             this.productDatalistKassa = new System.Windows.Forms.DataGridView();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.SearchButton = new System.Windows.Forms.Button();
+            this.ResetButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -113,11 +116,39 @@ namespace ShoppingSystem
             this.productDatalistKassa.Size = new System.Drawing.Size(1484, 634);
             this.productDatalistKassa.TabIndex = 4;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(110, 8);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(256, 22);
+            this.textBox1.TabIndex = 5;
+            // 
+            // SearchButton
+            // 
+            this.SearchButton.Location = new System.Drawing.Point(372, 7);
+            this.SearchButton.Name = "SearchButton";
+            this.SearchButton.Size = new System.Drawing.Size(75, 23);
+            this.SearchButton.TabIndex = 100;
+            this.SearchButton.Text = "Sök";
+            this.SearchButton.UseVisualStyleBackColor = true;
+            // 
+            // ResetButton
+            // 
+            this.ResetButton.Location = new System.Drawing.Point(453, 7);
+            this.ResetButton.Name = "ResetButton";
+            this.ResetButton.Size = new System.Drawing.Size(75, 23);
+            this.ResetButton.TabIndex = 100;
+            this.ResetButton.Text = "Nollställ";
+            this.ResetButton.UseVisualStyleBackColor = true;
+            // 
             // KassaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1484, 750);
+            this.Controls.Add(this.ResetButton);
+            this.Controls.Add(this.SearchButton);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.productDatalistKassa);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.ListLabel);
@@ -142,5 +173,8 @@ namespace ShoppingSystem
         private System.Windows.Forms.Button Add;
         private System.Windows.Forms.Button KundKorgButton;
         private System.Windows.Forms.DataGridView productDatalistKassa;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button SearchButton;
+        private System.Windows.Forms.Button ResetButton;
     }
 }

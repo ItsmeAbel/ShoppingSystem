@@ -44,13 +44,13 @@ namespace ShoppingSystem
                 if (!plist.type.Any() || !plist.author.Any() || !plist.genre.Any() || !plist.format.Any() || !plist.language.Any() || !plist.platform.Any())
                 {
                     if (plist.id != Math.Abs(plist.id) || plist.price != Math.Abs(plist.price)
-                        || plist.playtime != Math.Abs(plist.price) || plist.status != Math.Abs(plist.price)) //jämför värden med deras absoluta värden för att avgöra om talen innehåller negativa tal
+                        || plist.playtime != Math.Abs(plist.price) || plist.status != Math.Abs(plist.price))
                     {
                         DialogResult = DialogResult.No;
                     }
                     else if (plist.type.Any(char.IsDigit) || plist.name.Any(char.IsDigit)
                         || plist.author.Any(char.IsDigit) || plist.genre.Any(char.IsDigit)
-                        || plist.format.Any(char.IsDigit) || plist.language.Any(char.IsDigit) || plist.platform.Any(char.IsDigit)) //kollar ifall någon av string variabelerna innehåller int
+                        || plist.format.Any(char.IsDigit) || plist.language.Any(char.IsDigit) || plist.platform.Any(char.IsDigit)) 
                     {
                         DialogResult = DialogResult.No;
                     }
