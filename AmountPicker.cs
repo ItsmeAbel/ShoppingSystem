@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace ShoppingSystem
 {
-    public partial class AmountForm : Form
+    public partial class AmountPicker : Form
     {
 
         //internal ProductList plist { get; private set; }
         public string amount2 { get; set; }
-        public AmountForm()
+        public AmountPicker()
         {
             InitializeComponent();
         }
@@ -44,9 +44,11 @@ namespace ShoppingSystem
               DialogResult = DialogResult.OK;
 
             }
-            else
+            if (antalComboBox.SelectedItem == null)
             {
-                DialogResult = DialogResult.No;
+                amount2 = "0";
+                DialogResult = DialogResult.OK;
+
             }
 
         }

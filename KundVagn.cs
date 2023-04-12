@@ -16,7 +16,8 @@ namespace ShoppingSystem
         //List<ProductList> productlist;
         BackendPart backend = new BackendPart();
 
-        List<ProductList> biglist;
+        List<ProductList> biglist; //used for the main list returened from the backend
+        List<ProductList> printlist; //temp list used for recipt
         BindingList<ProductList> vagnProductList;
         BindingSource vagnproductListSource;
 
@@ -30,8 +31,8 @@ namespace ShoppingSystem
             vagnproductListSource.DataSource = vagnProductList;
             kundvagndataGridView.DataSource = vagnproductListSource;
 
-
-            biglist = backend.loadList();
+            biglist = backend.loadList(); //loads the csv data into the list
+            printlist = plist;
         }
 
 
@@ -40,46 +41,60 @@ namespace ShoppingSystem
 
         }
 
+        //user cancels purchase
         private void KVRemoveButton_Click(object sender, EventArgs e)
         {
             vagnProductList.Clear();
             this.Close();
         }
 
-        //vid tryck av försätt vidare knapp
+        //vid tryck av "försätt vidare" knapp
         private void ContinueButton_Click(object sender, EventArgs e)
         {
 
             foreach (var item in vagnProductList)
             {
-                var result = from r in biglist where r.id == item.id select r;
-                result.First().status = result.First().status - item.status;
+                var result = from r in biglist where r.id == item.id select r; //find item with matching id
+                result.First().status = result.First().status - item.status; //subtract from the status
             }
+            //prints out a recipt
             PrintDocument printDocument = new PrintDocument();
             printDocument.PrintPage += new PrintPageEventHandler(document_PrintPage);
             printDocument.DocumentName = "Kvitto";
             printDocument.Print();
 
-            backend.saveToCSV(biglist);
+            backend.saveToCSV(biglist); //saves new list into the csv
             vagnproductListSource.Clear();
             vagnProductList.Clear();
-            DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.OK; //returns ok
         }
 
+        //prints into pdf
         private void document_PrintPage(object sender, PrintPageEventArgs e)
         {
             int y = 20;
-            foreach (ProductList item in biglist)
+            foreach (ProductList item in printlist)
             {
                 e.Graphics.DrawString(item.name, new Font("Arial", 14), Brushes.Black, 20, y);
                 e.Graphics.DrawString(item.price.ToString(), new Font("Arial", 14), Brushes.Black, 250, y);
-                e.Graphics.DrawString(item.type, new Font("Arial", 14), Brushes.Black, 220, y);
-                e.Graphics.DrawString(item.author, new Font("Arial", 14), Brushes.Black, 320, y);
-                e.Graphics.DrawString(item.genre, new Font("Arial", 14), Brushes.Black, 420, y);
-                e.Graphics.DrawString(item.format, new Font("Arial", 14), Brushes.Black, 520, y);
-                e.Graphics.DrawString(item.language, new Font("Arial", 14), Brushes.Black, 620, y);
-                e.Graphics.DrawString(item.platform, new Font("Arial", 14), Brushes.Black, 720, y);
+                e.Graphics.DrawString(item.type, new Font("Arial", 14), Brushes.Black, 320, y);
+                e.Graphics.DrawString(item.author, new Font("Arial", 14), Brushes.Black, 420, y);
+                e.Graphics.DrawString(item.genre, new Font("Arial", 14), Brushes.Black, 520, y);
                 y += 20;
+            }
+        }
+
+        //hantering av celler
+        private void kundvagndataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+
+            if (e.Value != null && e.Value.ToString() == "")
+            {
+                e.CellStyle.BackColor = Color.Gray;
+            }
+            if (e.Value != null && e.Value.ToString() == "0")
+            {
+                e.Value = "Slut";
             }
         }
     }

@@ -7,16 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ShoppingSystem
 {
     public partial class addProductLager : Form
     {
+        int validator = 0;
+        bool notNum;
+        private ErrorProvider errorProvider1;
         internal ProductList plist { get; private set; }
         public addProductLager()
         {
             InitializeComponent();
             plist = new ProductList();
+            errorProvider1 = new ErrorProvider();
+            errorProvider1.ContainerControl = this;
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -29,7 +35,7 @@ namespace ShoppingSystem
             //plist = new ProductList();
             try
             {
-                plist.name = NameTextBox.Text;
+                
                 plist.type = TypeTextBox.Text;
                 plist.author = AuthorTextBox.Text;
                 plist.genre = GenreTextBox.Text;
@@ -39,41 +45,65 @@ namespace ShoppingSystem
 
                 plist.id = Int32.Parse(IDTextBox.Text);
                 plist.price = Int32.Parse(PriceTextBox.Text);
-                plist.playtime = Int32.Parse(PlaytimeTextBox.Text);
-                plist.status = Int32.Parse(StatusTextBox.Text);
-                if (!plist.type.Any() || !plist.author.Any() || !plist.genre.Any() || !plist.format.Any() || !plist.language.Any() || !plist.platform.Any())
-                {
-                    if (plist.id != Math.Abs(plist.id) || plist.price != Math.Abs(plist.price)
-                        || plist.playtime != Math.Abs(plist.price) || plist.status != Math.Abs(plist.price))
+                
+                    if (plist.price != Math.Abs(plist.price))
                     {
-                        DialogResult = DialogResult.No;
+                    validator += 1;
                     }
-                    else if (plist.type.Any(char.IsDigit) || plist.name.Any(char.IsDigit)
-                        || plist.author.Any(char.IsDigit) || plist.genre.Any(char.IsDigit)
-                        || plist.format.Any(char.IsDigit) || plist.language.Any(char.IsDigit) || plist.platform.Any(char.IsDigit)) 
-                    {
-                        DialogResult = DialogResult.No;
+
+                if (!String.IsNullOrEmpty(PlaytimeTextBox.Text))
+                {
+                    if(Int32.Parse(PlaytimeTextBox.Text) != Math.Abs(Int32.Parse(PlaytimeTextBox.Text))){
+                        validator +=1;
                     }
                     else
                     {
-                        DialogResult = DialogResult.OK;
+                        plist.playtime = PlaytimeTextBox.Text;
                     }
+                }
+
+                if (string.IsNullOrEmpty(StatusTextBox.Text.ToString())) {//tostring() is crucial. program throws exception otherwise
+                    plist.status = 0;
 
                 }
                 else
                 {
+                    plist.status = Int32.Parse(StatusTextBox.Text);
+                }
+
+                if (String.IsNullOrWhiteSpace(NameTextBox.Text.ToString()))
+                {
+                    validator += 1;
+                }
+                else
+                {
+                    plist.name = NameTextBox.Text;
+                }
+
+                if (validator == 0)
+                {
                     DialogResult = DialogResult.OK;
                 }
-             }
+                else
+                {
+                    DialogResult = DialogResult.No;
+                }
+
+                this.Close();
+
+
+            }
             catch
             {
-                DialogResult = DialogResult.Cancel;
+                DialogResult = DialogResult.No;
+                Console.WriteLine("ooga booga");
+                this.Close();
             }
            /* backend.addToBasket(Int32.Parse(IDTextBox.Text), NameTextBox.Text, Int32.Parse(PriceTextBox.Text), TypeTextBox.Text,
             AuthorTextBox.Text, GenreTextBox.Text, FormatTextBox.Text,
                 LanguageTextBox.Text, PlatformTextBox.Text, Int32.Parse(PlaytimeTextBox.Text));*/
 
-            Close();
+            
         }
 
         private void LagerCancelButton_Click(object sender, EventArgs e)
@@ -84,6 +114,196 @@ namespace ShoppingSystem
         private void TypeTextBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void PriceTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string tempstring = PriceTextBox.Text;
+            foreach (char c in tempstring)
+            {
+                if (!char.IsDigit(c))
+                {
+                    notNum =true;
+                }
+            }
+    
+            if(notNum && !String.IsNullOrEmpty(PriceTextBox.Text.ToString())){
+                
+                MessageBox.Show("Inga boskstäver!");
+                PriceTextBox.Text = "";
+                notNum = false;
+            }
+        }
+
+        private void LagerAddButton_Validating(object sender, CancelEventArgs e)
+        {
+
+        }
+
+
+        private void GenreTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string tempstring = GenreTextBox.Text;
+            foreach (char c in tempstring)
+            {
+                if (char.IsDigit(c))
+                {
+                    notNum = true;
+                }
+            }
+
+            if (notNum && !String.IsNullOrEmpty(GenreTextBox.Text.ToString()))
+            {
+
+                MessageBox.Show("Inga siffror!");
+                GenreTextBox.Text = "";
+                notNum = false;
+            }
+        }
+
+        private void IDTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string tempstring = IDTextBox.Text;
+            foreach (char c in tempstring)
+            {
+                if (!char.IsDigit(c))
+                {
+                    notNum = true;
+                }
+            }
+
+            if (notNum && !String.IsNullOrEmpty(IDTextBox.Text.ToString()))
+            {
+
+                MessageBox.Show("Endast Siffror!");
+                IDTextBox.Text = "";
+                notNum = false;
+            }
+        }
+
+        private void NameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string tempstring = NameTextBox.Text;
+            foreach (char c in tempstring)
+            {
+                if (char.IsDigit(c))
+                {
+                    notNum = true;
+                }
+            }
+
+            if (notNum && !String.IsNullOrEmpty(NameTextBox.Text.ToString()))
+            {
+
+                MessageBox.Show("Inga siffror!");
+                NameTextBox.Text = "";
+                notNum = false;
+            }
+        }
+
+        private void AuthorTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string tempstring = AuthorTextBox.Text;
+            foreach (char c in tempstring)
+            {
+                if (char.IsDigit(c))
+                {
+                    notNum = true;
+                }
+            }
+
+            if (notNum && !String.IsNullOrEmpty(AuthorTextBox.Text.ToString()))
+            {
+
+                MessageBox.Show("Inga siffror!");
+                AuthorTextBox.Text = "";
+                notNum = false;
+            }
+        }
+
+        private void FormatTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string tempstring = FormatTextBox.Text;
+            foreach (char c in tempstring)
+            {
+                if (char.IsDigit(c))
+                {
+                    notNum = true;
+                }
+            }
+
+            if (notNum && !String.IsNullOrEmpty(FormatTextBox.Text.ToString()))
+            {
+
+                MessageBox.Show("Inga siffror!");
+                FormatTextBox.Text = "";
+                notNum = false;
+            }
+        }
+
+        private void PlatformTextBox_TextChanged(object sender, EventArgs e)
+        {
+            //lämnar tomt pga exemplevis ps4
+        }
+
+        private void PlaytimeTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string tempstring = PlaytimeTextBox.Text;
+            foreach (char c in tempstring)
+            {
+                if (!char.IsDigit(c))
+                {
+                    notNum = true;
+                }
+            }
+
+            if (notNum && !String.IsNullOrEmpty(PlaytimeTextBox.Text.ToString()))
+            {
+
+                MessageBox.Show("Inga boskstäver!");
+                PlaytimeTextBox.Text = "";
+                notNum = false;
+            }
+        }
+
+        private void StatusTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string tempstring = StatusTextBox.Text;
+            foreach (char c in tempstring)
+            {
+                if (!char.IsDigit(c))
+                {
+                    notNum = true;
+                }
+            }
+
+            if (notNum && !String.IsNullOrEmpty(StatusTextBox.Text.ToString()))
+            {
+
+                MessageBox.Show("Inga boskstäver!");
+                StatusTextBox.Text = "";
+                notNum = false;
+            }
+        }
+
+        private void LanguageTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string tempstring = LanguageTextBox.Text;
+            foreach (char c in tempstring)
+            {
+                if (char.IsDigit(c))
+                {
+                    notNum = true;
+                }
+            }
+
+            if (notNum && !String.IsNullOrEmpty(LanguageTextBox.Text.ToString()))
+            {
+
+                MessageBox.Show("Inga siffror!");
+                LanguageTextBox.Text = "";
+                notNum = false;
+            }
         }
     }
 }

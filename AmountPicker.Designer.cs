@@ -1,7 +1,7 @@
 ﻿
 namespace ShoppingSystem
 {
-    partial class AmountForm
+    partial class AmountPicker
     {
         /// <summary>
         /// Required designer variable.
@@ -44,20 +44,24 @@ namespace ShoppingSystem
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.groupBox1.Controls.Add(this.splitContainer1);
             this.groupBox1.Controls.Add(this.antalComboBox);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(455, 125);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(359, 147);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 72);
+            this.splitContainer1.Location = new System.Drawing.Point(2, 104);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -67,16 +71,21 @@ namespace ShoppingSystem
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.cancelButton);
-            this.splitContainer1.Size = new System.Drawing.Size(449, 50);
-            this.splitContainer1.SplitterDistance = 220;
+            this.splitContainer1.Size = new System.Drawing.Size(355, 41);
+            this.splitContainer1.SplitterDistance = 173;
+            this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 2;
             // 
             // orderButton
             // 
             this.orderButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.orderButton.FlatAppearance.BorderSize = 0;
+            this.orderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.orderButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.orderButton.Location = new System.Drawing.Point(0, 0);
+            this.orderButton.Margin = new System.Windows.Forms.Padding(2);
             this.orderButton.Name = "orderButton";
-            this.orderButton.Size = new System.Drawing.Size(220, 50);
+            this.orderButton.Size = new System.Drawing.Size(173, 41);
             this.orderButton.TabIndex = 0;
             this.orderButton.Text = "OK";
             this.orderButton.UseVisualStyleBackColor = true;
@@ -85,9 +94,13 @@ namespace ShoppingSystem
             // cancelButton
             // 
             this.cancelButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cancelButton.FlatAppearance.BorderSize = 0;
+            this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancelButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.cancelButton.Location = new System.Drawing.Point(0, 0);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(225, 50);
+            this.cancelButton.Size = new System.Drawing.Size(179, 41);
             this.cancelButton.TabIndex = 0;
             this.cancelButton.Text = "Avbryt";
             this.cancelButton.UseVisualStyleBackColor = true;
@@ -95,30 +108,37 @@ namespace ShoppingSystem
             // 
             // antalComboBox
             // 
+            this.antalComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.antalComboBox.CausesValidation = false;
             this.antalComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.antalComboBox.Location = new System.Drawing.Point(115, 21);
+            this.antalComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.antalComboBox.Location = new System.Drawing.Point(89, 42);
+            this.antalComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.antalComboBox.Name = "antalComboBox";
-            this.antalComboBox.Size = new System.Drawing.Size(328, 24);
+            this.antalComboBox.Size = new System.Drawing.Size(247, 21);
             this.antalComboBox.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 18);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.label1.Location = new System.Drawing.Point(12, 40);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 32);
+            this.label1.Size = new System.Drawing.Size(81, 26);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Antall: ";
+            this.label1.Text = "Antal: ";
             // 
             // AmountForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(455, 125);
+            this.ClientSize = new System.Drawing.Size(359, 147);
             this.Controls.Add(this.groupBox1);
-            this.MinimumSize = new System.Drawing.Size(473, 172);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(359, 147);
             this.Name = "AmountForm";
             this.Text = "Antal Mängd";
             this.Load += new System.EventHandler(this.Grossit_Load);

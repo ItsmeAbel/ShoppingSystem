@@ -12,7 +12,7 @@
         public string format { get; set; }
         public string language { get; set; }
         public string platform { get; set; }
-        public int playtime { get; set; }
+        public string playtime { get; set; }
         public int status { get; set; }
     }
 }

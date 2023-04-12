@@ -29,11 +29,12 @@ namespace ShoppingSystem
             catch
             {
 
-
             }
             productListSource = new BindingSource();
             productListSource.DataSource = lagerProductList;
             productDatalistLager.DataSource = productListSource;
+            //productDatalistLager.ForeColor = System.Drawing.Color.Red;
+            searchComboBox.SelectedItem = "id"; //default pick for the dropdown menu for the search
         }
 
         private void ContinueButtton_Click(object sender, EventArgs e)
@@ -41,16 +42,16 @@ namespace ShoppingSystem
             this.Close();
         }
 
-        //Grossit button handle
+        //används för att fylla på ett produkt
         private void button1_Click(object sender, EventArgs e)
         {
             if (productDatalistLager.SelectedRows.Count < 1)
                 return;
             var product = (ProductList)productDatalistLager.SelectedRows[0].DataBoundItem;
-            AmountForm grossit = new AmountForm();
+            AmountPicker grossit = new AmountPicker();
             grossit.StartPosition = FormStartPosition.CenterParent;
             //grossit.Show();
-            using (AmountForm antal = new AmountForm())
+            using (AmountPicker antal = new AmountPicker())
             {
                 if (grossit.ShowDialog() == DialogResult.OK)
                 {
@@ -59,18 +60,17 @@ namespace ShoppingSystem
                     productListSource.ResetBindings(false); //updates the list
                 }
 
-                }
-
             }
+        }
 
+        //används för att lägga ett nytt vara
         private void addToLagerButton_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //ps. had a try catch here
                 addProductLager form = new addProductLager();
                 form.StartPosition = FormStartPosition.CenterParent;
-                //form.Show();
-                if (form.ShowDialog() == DialogResult.OK)
+                form.ShowDialog();
+                if (form.DialogResult == DialogResult.OK)
                 {
                     Console.WriteLine("{0}", backend.idcheck(form.plist.id));
                     if (backend.idcheck(form.plist.id) == true)
@@ -84,35 +84,36 @@ namespace ShoppingSystem
                     }
 
                 }
-                else
+                else if (form.DialogResult == DialogResult.No)
                 {
                     MessageBox.Show("Något stämmer ej!");
+                }
+                else
+                {
+                    
 
                 }
 
-            }
-            catch
-            {
+            form.Dispose();
 
-
-            }
 
             
             //updateList();
         }
 
+        //tar bort ett vara
         private void RemoveButton_Click(object sender, EventArgs e)
         {
             if (productDatalistLager.SelectedRows.Count < 1)
                 return;
-            var product = (ProductList)productDatalistLager.SelectedRows[0].DataBoundItem; //the item in the selected row is out in the variable product
-            if(product.status == 0) //om producted inte finns i lager, ta bort
+            var product = (ProductList)productDatalistLager.SelectedRows[0].DataBoundItem; //den valda produkten
+            if(product.status == 0) //om produkten är slut
             {
-                productListSource.Remove(product);
+                productListSource.Remove(product); //ta bort den
                 backend.saveToCSV(lagerProductList);
             }
-            else {
-                DialogResult dialogResult = MessageBox.Show("Vill du verkligen ta bort varan?", "Varan finns i lager!", MessageBoxButtons.YesNo);
+            else { //om produk ej slut
+                DialogResult dialogResult = MessageBox.Show("Vill du verkligen ta bort varan?", "Varan finns i lager!", MessageBoxButtons.YesNo); //visa varning
                 if (dialogResult == DialogResult.Yes)
                 {
                     productListSource.Remove(product);
@@ -136,6 +137,85 @@ namespace ShoppingSystem
         private void productDatalistLager_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        //sets empty cells to gray
+        private void productDatalistLager_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            e.CellStyle.BackColor = Color.DarkSlateBlue;
+            if (e.Value != null && e.Value.ToString() == "") //tomma celler får grå bakgrund
+            {
+                e.CellStyle.BackColor = Color.Gray;
+            }
+            if (e.Value != null && e.Value.ToString() == "0") //om status är 0 skriv "slut" istället
+            {
+                e.Value = "Slut";
+            }
+        }
+
+        //används för sökning av produkt
+        private void searchTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                var columnPick = searchComboBox.Text;
+                Console.WriteLine(columnPick);
+                string lowerSearch = searchTextBox.Text.ToLower();
+                BindingList<ProductList> filteredList = new BindingList<ProductList>(lagerProductList.Where(obj => obj.id.ToString().Contains(lowerSearch)).ToList());
+
+                //sorry for nesting. couldn't finding a better way
+                if (columnPick == "id")
+                {
+                    filteredList = new BindingList<ProductList>(lagerProductList.Where(obj => obj.id.ToString().Contains(lowerSearch)).ToList());
+
+                }
+                else if (columnPick == "name")
+                {
+                    filteredList = new BindingList<ProductList>(lagerProductList.Where(obj => obj.name.ToLower().Contains(lowerSearch)).ToList());
+                }
+                else if (columnPick == "price")
+                {
+                    filteredList = new BindingList<ProductList>(lagerProductList.Where(obj => obj.price.ToString().Contains(lowerSearch)).ToList());
+                }
+                else if (columnPick == "type")
+                {
+                    filteredList = new BindingList<ProductList>(lagerProductList.Where(obj => obj.type.ToLower().Contains(lowerSearch)).ToList());
+                }
+                else if (columnPick == "author")
+                {
+                    filteredList = new BindingList<ProductList>(lagerProductList.Where(obj => obj.author.ToLower().Contains(lowerSearch)).ToList());
+                }
+                else if (columnPick == "genre")
+                {
+                    filteredList = new BindingList<ProductList>(lagerProductList.Where(obj => obj.genre.ToLower().Contains(lowerSearch)).ToList());
+                }
+                else if (columnPick == "format")
+                {
+                    filteredList = new BindingList<ProductList>(lagerProductList.Where(obj => obj.format.ToLower().Contains(lowerSearch)).ToList());
+                }
+                else if (columnPick == "language")
+                {
+                    filteredList = new BindingList<ProductList>(lagerProductList.Where(obj => obj.language.ToLower().Contains(lowerSearch)).ToList());
+                }
+                else if (columnPick == "platform")
+                {
+                    filteredList = new BindingList<ProductList>(lagerProductList.Where(obj => obj.platform.ToLower().Contains(lowerSearch)).ToList());
+                }
+                else if (columnPick == "playtime")
+                {
+                    filteredList = new BindingList<ProductList>(lagerProductList.Where(obj => obj.playtime.ToString().Contains(lowerSearch)).ToList());
+                }
+                else
+                {
+
+                }
+
+
+                //productListSource.Filter = string.Format("{0}='{1}'","name",searchTextBox.Text);
+
+                productDatalistLager.DataSource = filteredList;
+                productListSource.ResetBindings(false);
+            }
         }
     }
 }

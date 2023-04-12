@@ -10,30 +10,30 @@ using System.Windows.Forms;
 
 namespace ShoppingSystem
 {
-    public partial class MainShop : Form
+    public partial class Shwep : Form
     {
-        public MainShop()
+        public Shwep()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        //loads kassaform on button click
+        private void KassaButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
             //opens the checkout form
+            //this.Hide();
             KassaForm form = new KassaForm();
             form.Show();
         }
 
+        //loads lagerform on button click
         private void LagerButton_Click(object sender, EventArgs e)
         {
+            //this.Hide();
             LagerForm form = new LagerForm();
             form.Show();
         }
     }
+
+
 }

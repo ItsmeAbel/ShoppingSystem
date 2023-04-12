@@ -21,28 +21,26 @@ namespace ShoppingSystem
         //string relativepath = @"..\..\..\..\..\products.csv";
         public BackendPart()
         {
-            
-            productlist = new List<ProductList>();
 
+            productlist = new List<ProductList>();
         }
 
+        //läser data från csv filen och lägger datan i produkt listan
         public List<ProductList> loadList()
         {
             Console.WriteLine("The path is" + Directory.GetCurrentDirectory());
-            using (var reader = new StreamReader(Directory.GetCurrentDirectory() + "\\products.csv")) //Easy solution for a relative path. Can't beleve i spent 2 hours on this just to find out this is the solution. smh
-                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-                {
-                    productlist = csv.GetRecords<ProductList>().ToList();
+            using (var reader = new StreamReader(Directory.GetCurrentDirectory() + "\\products.csv")) //Easy solution for a relative path. Can't beleve i spent 2 hours on this just to find out this solution exists
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                productlist = csv.GetRecords<ProductList>().ToList();
 
-                }
-                return productlist;
-            
-
+            }
+            return productlist;
         }
-
-        public void addToBasket(int iid, string nname, int pprice, 
-            string ttype, string aauthor,string ggenre, string fformat,
-            string llanguage, string pplatform, int pplaytime)
+        /**
+        public void addToBasket(int iid, string nname, int pprice,
+            string ttype, string aauthor, string ggenre, string fformat,
+            string llanguage, string pplatform, string pplaytime)
         {
 
             /* ProductList newlist= new ProductList(iid, nname, pprice, ttype, aauthor, 
@@ -51,7 +49,7 @@ namespace ShoppingSystem
              //...and append the new list to the already existing one
 
 
-             productlist.Add(newlist);*/
+             productlist.Add(newlist);
 
             List<ProductList> newlist;
             newlist = new List<ProductList>
@@ -64,32 +62,34 @@ namespace ShoppingSystem
 
             productlist.AddRange(newlist);
             //saveToCSV(newlist);
-            
-            
+
+
             /*
             var writer = new StreamWriter("products.csv");
             var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
-            csv.WriteRecords(productlist);*/
-        }
+            csv.WriteRecords(productlist);
+        }*/
 
-        public bool idcheck(int idd)  //kollar ifall varunummret redan finns
+        //kontrollerar ifall varunummret redan finns
+        public bool idcheck(int idd)
         {
             loadList();
-            if(productlist.Exists((x => x.id == idd)) == true) 
+            if (productlist.Exists((x => x.id == idd)) == true)
             {
-                return true;
+                return true; //returns true if it does
             }
             else
             {
                 return false;
             }
-            
+
         }
 
+        //sparar listan till csv filen
         public void saveToCSV(IEnumerable<ProductList> templist)
         {
             //saves the whole list into a csv file
-                //was trying to append the list before, which didn't work. Solved it by the saving the whole file into the list instead
+            //was trying to append the list before, which didn't work. Solved it by the saving the whole file into the list instead
             using (var stream = new StreamWriter("products.csv"))
             using (var csv = new CsvWriter(stream, CultureInfo.InvariantCulture))
             {
