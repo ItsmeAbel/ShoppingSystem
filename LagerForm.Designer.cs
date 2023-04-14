@@ -43,6 +43,9 @@ namespace ShoppingSystem
             this.LagerFormbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.searchComboBox = new System.Windows.Forms.ComboBox();
             this.searchTextBox = new System.Windows.Forms.TextBox();
+            this.updateButton = new System.Windows.Forms.Button();
+            this.lastUpdateLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -282,12 +285,48 @@ namespace ShoppingSystem
             this.searchTextBox.TabIndex = 8;
             this.searchTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchTextBox_KeyDown);
             // 
+            // updateButton
+            // 
+            this.updateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.updateButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.updateButton.Location = new System.Drawing.Point(1026, 0);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(75, 23);
+            this.updateButton.TabIndex = 10;
+            this.updateButton.Text = "Uppdatera";
+            this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
+            // 
+            // lastUpdateLabel
+            // 
+            this.lastUpdateLabel.AutoSize = true;
+            this.lastUpdateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.lastUpdateLabel.Location = new System.Drawing.Point(954, 5);
+            this.lastUpdateLabel.Name = "lastUpdateLabel";
+            this.lastUpdateLabel.Size = new System.Drawing.Size(49, 13);
+            this.lastUpdateLabel.TabIndex = 11;
+            this.lastUpdateLabel.Text = "00:00:00";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.label1.Location = new System.Drawing.Point(880, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Last Update:";
+            // 
             // LagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.ClientSize = new System.Drawing.Size(1113, 609);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lastUpdateLabel);
+            this.Controls.Add(this.updateButton);
             this.Controls.Add(this.searchComboBox);
             this.Controls.Add(this.searchTextBox);
             this.Controls.Add(this.productDatalistLager);
@@ -331,5 +370,8 @@ namespace ShoppingSystem
         private System.Windows.Forms.BindingSource LagerFormbindingSource;
         private System.Windows.Forms.ComboBox searchComboBox;
         private System.Windows.Forms.TextBox searchTextBox;
+        private System.Windows.Forms.Button updateButton;
+        private System.Windows.Forms.Label lastUpdateLabel;
+        private System.Windows.Forms.Label label1;
     }
 }

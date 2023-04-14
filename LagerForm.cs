@@ -4,9 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
 using Microsoft.VisualBasic;
 
 namespace ShoppingSystem
@@ -215,6 +218,62 @@ namespace ShoppingSystem
 
                 productDatalistLager.DataSource = filteredList;
                 productListSource.ResetBindings(false);
+            }
+        }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            WebClient client = new WebClient();
+            var text = client.DownloadString("https://hex.cse.kau.se/~jonavest/csharp-api");
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(text);
+
+            int numChildElements = doc.ChildNodes
+                            .OfType<XmlElement>()
+                            .Count();
+            Console.WriteLine(numChildElements);
+
+            foreach (XmlElement elem in doc.FirstChild.ChildNodes)
+            {
+                Console.WriteLine(elem.InnerXml + "\n");
+                if (elem.Name == "metadata")
+                {
+                    foreach (XmlElement mdata in elem.ChildNodes)
+                    {
+
+                        if (mdata.Name == "lastseed")
+                        {
+
+                        }
+                        else if (mdata.Name == "lastupdate")
+                        {
+                            lastUpdateLabel.Text = mdata.InnerText;
+                            Console.WriteLine(mdata.InnerText);
+                        }
+
+
+                    }
+                }
+                else if (elem.Name == "products")
+                {
+                    foreach (XmlElement prod in elem.ChildNodes)
+                    {
+
+                        if (prod.Name == "lastseed")
+                        {
+
+                        }
+                        else if (prod.Name == "lastupdate")
+                        {
+                            lastUpdateLabel.Text = prod.InnerText;
+                            Console.WriteLine($"Last Update: {prod.InnerText}");
+                        }
+
+
+                    }
+                }
+                
+
             }
         }
     }
