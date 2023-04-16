@@ -304,19 +304,19 @@ namespace ShoppingSystem
             this.lastUpdateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.lastUpdateLabel.Location = new System.Drawing.Point(954, 5);
             this.lastUpdateLabel.Name = "lastUpdateLabel";
-            this.lastUpdateLabel.Size = new System.Drawing.Size(49, 13);
+            this.lastUpdateLabel.Size = new System.Drawing.Size(33, 13);
             this.lastUpdateLabel.TabIndex = 11;
-            this.lastUpdateLabel.Text = "00:00:00";
+            this.lastUpdateLabel.Text = "Aldrig";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.label1.Location = new System.Drawing.Point(880, 5);
+            this.label1.Location = new System.Drawing.Point(878, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 13);
+            this.label1.Size = new System.Drawing.Size(80, 13);
             this.label1.TabIndex = 12;
-            this.label1.Text = "Last Update:";
+            this.label1.Text = "Sist Updaterad:";
             // 
             // LagerForm
             // 

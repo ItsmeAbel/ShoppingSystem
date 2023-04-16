@@ -20,6 +20,11 @@ namespace ShoppingSystem
 
         BindingList<ProductList> lagerProductList;
         BindingSource productListSource;
+
+        int tempId;
+        int tempPrice;
+        int tempStock; 
+        List<ProductList> centralagerList;
         public LagerForm()
         {
             InitializeComponent();
@@ -38,6 +43,8 @@ namespace ShoppingSystem
             productDatalistLager.DataSource = productListSource;
             //productDatalistLager.ForeColor = System.Drawing.Color.Red;
             searchComboBox.SelectedItem = "id"; //default pick for the dropdown menu for the search
+
+            centralagerList = new List<ProductList>();
         }
 
         private void ContinueButtton_Click(object sender, EventArgs e)
@@ -235,7 +242,7 @@ namespace ShoppingSystem
 
             foreach (XmlElement elem in doc.FirstChild.ChildNodes)
             {
-                Console.WriteLine(elem.InnerXml + "\n");
+                //Console.WriteLine(elem.InnerXml + "\n");
                 if (elem.Name == "metadata")
                 {
                     foreach (XmlElement mdata in elem.ChildNodes)
@@ -258,16 +265,48 @@ namespace ShoppingSystem
                 {
                     foreach (XmlElement prod in elem.ChildNodes)
                     {
-
-                        if (prod.Name == "lastseed")
+                        foreach (XmlElement belem in prod.ChildNodes)
                         {
+                            
+                            if (belem.Name == "id")
+                            {
+                                tempId = Int32.Parse(belem.InnerText);
+                                Console.WriteLine(tempId);
+                                //centralagerList.Add(new ProductList { });
+                            }
+                            else if (belem.Name == "price")
+                            {
+                                
+                                tempPrice = Int32.Parse(belem.InnerText);
+                                Console.WriteLine(tempPrice);
+                            }
+                            else if (belem.Name == "stock")
+                            {
+                                tempStock = Int32.Parse(belem.InnerText);
+                                Console.WriteLine(tempStock);
+                            }
+
+                            if (backend.idcheck(tempId) == true)
+                            {
+                                int indexx = lagerProductList.IndexOf(lagerProductList.FirstOrDefault(item => item.id == tempId));
+                                lagerProductList[indexx].price = tempPrice;
+                                lagerProductList[indexx].status = tempStock;
+
+                                productListSource.ResetBindings(false);
+                                //backend.saveToCSV(lagerProductList);
+                            }
+                            else if (backend.idcheck(tempId) == false)
+                            {
+                                int indexx = lagerProductList.IndexOf(lagerProductList.FirstOrDefault(item => item.id == tempId));
+                                lagerProductList[indexx] = new ProductList { id = tempId };
+
+                                productListSource.ResetBindings(false);
+                            }
+
 
                         }
-                        else if (prod.Name == "lastupdate")
-                        {
-                            lastUpdateLabel.Text = prod.InnerText;
-                            Console.WriteLine($"Last Update: {prod.InnerText}");
-                        }
+                        
+                        
 
 
                     }
