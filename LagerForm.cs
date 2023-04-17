@@ -231,7 +231,16 @@ namespace ShoppingSystem
         private void updateButton_Click(object sender, EventArgs e)
         {
             WebClient client = new WebClient();
-            var text = client.DownloadString("https://hex.cse.kau.se/~jonavest/csharp-api");
+            string text;
+            try
+            {
+                text = client.DownloadString("https://hex.cse.kau.se/~jonavest/csharp-api");
+            }
+            catch
+            {
+                text = client.DownloadString("https://hex.cse.kau.se/~jonavest/csharp-api/?action=error");
+            }
+            
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(text);
 
@@ -243,7 +252,10 @@ namespace ShoppingSystem
             foreach (XmlElement elem in doc.FirstChild.ChildNodes)
             {
                 //Console.WriteLine(elem.InnerXml + "\n");
-                if (elem.Name == "metadata")
+                if (elem.Name == "error")
+                {
+                    MessageBox.Show(this, elem.InnerText,"Error");
+                }else if (elem.Name == "metadata")
                 {
                     foreach (XmlElement mdata in elem.ChildNodes)
                     {
@@ -293,12 +305,14 @@ namespace ShoppingSystem
                                 lagerProductList[indexx].status = tempStock;
 
                                 productListSource.ResetBindings(false);
-                                //backend.saveToCSV(lagerProductList);
+                                backend.saveToCSV(lagerProductList);
                             }
                             else if (backend.idcheck(tempId) == false)
                             {
                                 int indexx = lagerProductList.IndexOf(lagerProductList.FirstOrDefault(item => item.id == tempId));
-                                lagerProductList[indexx] = new ProductList { id = tempId };
+                                lagerProductList[indexx] = new ProductList { id = tempId, name = "", price = 0,
+                                                                type="", author = "", genre= "",format = "",
+                                                                language = "",platform = "", playtime = "", status = 0};
 
                                 productListSource.ResetBindings(false);
                             }
