@@ -17,6 +17,8 @@ namespace ShoppingSystem
         //private int returncheck = 0;
 
         List<ProductList> vagnlist; //list for the shopping cart
+        List<ProductList> returnlist;
+
         BackendPart backend = new BackendPart();
         BindingList<ProductList> kassaProductList;
         BindingSource productListSource;
@@ -26,6 +28,7 @@ namespace ShoppingSystem
         {
             InitializeComponent();
             vagnlist = new List<ProductList>();
+            returnlist = new List<ProductList>();
             try
             {
                 kassaProductList = new BindingList<ProductList>(backend.loadList());
@@ -201,6 +204,63 @@ namespace ShoppingSystem
                 productListSource.ResetBindings(false);
 
             }
+        }
+
+        private void returnButton_Click(object sender, EventArgs e)
+        {
+            if (productDatalistKassa.SelectedRows.Count < 1)
+                return;
+            var product = (ProductList)productDatalistKassa.SelectedRows[0].DataBoundItem; //varan användaren vill köpa
+
+            AmountPicker returnantal = new AmountPicker(); //väljer antal
+
+            returnantal.StartPosition = FormStartPosition.CenterParent;
+            returnantal.ShowDialog();
+            using (returnantal)
+            {
+                if (returnantal.DialogResult == DialogResult.OK)
+                {
+                    if (int.Parse(returnantal.amount2) == 0)
+                    {
+                        MessageBox.Show("Inga antal vald!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Produkt lagt i returlistan!");
+                        // product.status = product.status - int.Parse(antal.amount2); //updates the product status
+                        productListSource.ResetBindings(false); //updaterar listan
+                                                                //adds the product to the basket
+                        List<ProductList> newlist;
+                        newlist = new List<ProductList>
+                        {
+                       new ProductList {id = product.id, name = product.name,
+                        price= product.price,type=product.type,author=product.author, genre = product.genre,
+                        format= product.format, language= product.language, platform= product.platform, playtime= product.playtime, status = int.Parse(returnantal.amount2)}
+                        };
+                        returnlist.AddRange(newlist);
+                    }
+                    productListSource.ResetBindings(false);
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            returnForm retrnform = new returnForm(returnlist); //sends the new list to form as a parameter
+            retrnform.StartPosition = FormStartPosition.CenterParent;
+            //vagnform.Show();
+            if (retrnform.ShowDialog() == DialogResult.OK)
+            {
+                productListSource.Clear();
+                kassaProductList = new BindingList<ProductList>(backend.loadList());
+                productListSource.DataSource = kassaProductList;
+                productDatalistKassa.DataSource = productListSource;
+                productDatalistKassa.BackgroundColor = Color.Black;
+            }
+            else
+            {
+            }
+            productListSource.ResetBindings(false);
         }
     }
 }
