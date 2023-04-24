@@ -5,14 +5,12 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 using Microsoft.VisualBasic;
-using System.Timers;
 
 namespace ShoppingSystem
 {
@@ -27,7 +25,6 @@ namespace ShoppingSystem
         int tempPrice;
         int tempStock; 
         List<ProductList> centralagerList;
-        private static System.Threading.Timer aTimer;
         public LagerForm()
         {
             InitializeComponent();
@@ -48,24 +45,10 @@ namespace ShoppingSystem
             searchComboBox.SelectedItem = "id"; //default pick for the dropdown menu for the search
 
             centralagerList = new List<ProductList>();
-            updateTimer.Start();
-      
-            // Console.ReadKey();
-        }
-
-        private static void Timer_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            DateTime now = DateTime.Now; // Get the current date and time
-            string date = now.ToString("d");
-            // Your task goes here
-            Console.WriteLine("Task executed at: " + date);
-
         }
 
         private void ContinueButtton_Click(object sender, EventArgs e)
         {
-            backend.saveToCSV(lagerProductList);
-            updateTimer.Stop();
             this.Close();
         }
 
@@ -247,16 +230,6 @@ namespace ShoppingSystem
 
         private void updateButton_Click(object sender, EventArgs e)
         {
-            httpgetz();
-        }
-
-        private void uploadButton_Click(object sender, EventArgs e)
-        {
-            _ = httpput();
-        }
-
-        private void httpgetz()
-        {
             WebClient client = new WebClient();
             string text;
             try
@@ -267,7 +240,7 @@ namespace ShoppingSystem
             {
                 text = client.DownloadString("https://hex.cse.kau.se/~jonavest/csharp-api/?action=error");
             }
-
+            
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(text);
 
@@ -281,9 +254,8 @@ namespace ShoppingSystem
                 //Console.WriteLine(elem.InnerXml + "\n");
                 if (elem.Name == "error")
                 {
-                    MessageBox.Show(this, elem.InnerText, "Error");
-                }
-                else if (elem.Name == "metadata")
+                    MessageBox.Show(this, elem.InnerText,"Error");
+                }else if (elem.Name == "metadata")
                 {
                     foreach (XmlElement mdata in elem.ChildNodes)
                     {
@@ -295,7 +267,6 @@ namespace ShoppingSystem
                         else if (mdata.Name == "lastupdate")
                         {
                             lastUpdateLabel.Text = mdata.InnerText;
-                            //SetText(mdata.InnerText.ToString());
                             Console.WriteLine(mdata.InnerText);
                         }
 
@@ -308,7 +279,7 @@ namespace ShoppingSystem
                     {
                         foreach (XmlElement belem in prod.ChildNodes)
                         {
-
+                            
                             if (belem.Name == "id")
                             {
                                 tempId = Int32.Parse(belem.InnerText);
@@ -317,7 +288,7 @@ namespace ShoppingSystem
                             }
                             else if (belem.Name == "price")
                             {
-
+                                
                                 tempPrice = Int32.Parse(belem.InnerText);
                                 Console.WriteLine(tempPrice);
                             }
@@ -334,80 +305,29 @@ namespace ShoppingSystem
                                 lagerProductList[indexx].status = tempStock;
 
                                 productListSource.ResetBindings(false);
-                                
+                                backend.saveToCSV(lagerProductList);
                             }
                             else if (backend.idcheck(tempId) == false)
                             {
                                 int indexx = lagerProductList.IndexOf(lagerProductList.FirstOrDefault(item => item.id == tempId));
+                                lagerProductList[indexx] = new ProductList { id = tempId, name = "", price = 0,
+                                                                type="", author = "", genre= "",format = "",
+                                                                language = "",platform = "", playtime = "", status = 0};
 
-                                lagerProductList.Add(new ProductList()
-                                {
-                                    id = tempId,
-                                    name = "new item",
-                                    price = tempPrice,
-                                    type = "new item",
-                                    author = "new item ",
-                                    genre = "new item",
-                                    format = "new item",
-                                    language = "new item",
-                                    platform = "new item",
-                                    playtime = "new item",
-                                    status = tempStock
-                                });
                                 productListSource.ResetBindings(false);
                             }
 
 
                         }
-
-
+                        
+                        
 
 
                     }
                 }
-
+                
 
             }
-
-
-        }
-
-        delegate void SetTextCallback(string text);
-        private void SetText(string text)
-        {
-            // InvokeRequired required compares the thread ID of the
-            // calling thread to the thread ID of the creating thread.
-            // If these threads are different, it returns true.
-            if (this.lastUpdateLabel.InvokeRequired)
-            {
-                SetTextCallback d = new SetTextCallback(SetText);
-                this.Invoke(d, new object[] { text });
-            }
-            else
-            {
-                this.lastUpdateLabel.Text = text;
-            }
-        }
-        private async Task httpput()
-        {
-            foreach (var item in lagerProductList)
-            {
-                string url = $"https://hex.cse.kau.se/~jonavest/csharp-api/?action=update&id={item.id}&stock={item.status}";
-                Console.WriteLine(url);
-
-                var client = new HttpClient();
-                var request = new HttpRequestMessage(HttpMethod.Post, url);
-                var response = await client.SendAsync(request);
-                response.EnsureSuccessStatusCode();
-                Console.WriteLine(await response.Content.ReadAsStringAsync());
-            }
-
-        }
-
-        private void updateTimer_Tick(object sender, EventArgs e)
-        {
-            httpgetz();
-            updateTimer.Start();
         }
     }
 }

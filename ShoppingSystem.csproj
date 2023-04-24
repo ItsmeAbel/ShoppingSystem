@@ -32,9 +32,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>mainShop.ico</ApplicationIcon>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CsvHelper, Version=27.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
       <HintPath>packages\CsvHelper.27.2.0\lib\net45\CsvHelper.dll</HintPath>
@@ -104,12 +101,6 @@
     <Compile Include="ProductList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="returnForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="returnForm.Designer.cs">
-      <DependentUpon>returnForm.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="addProductLager.resx">
       <DependentUpon>addProductLager.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,9 +123,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="returnForm.resx">
-      <DependentUpon>returnForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -184,9 +172,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\right.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="mainShop.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

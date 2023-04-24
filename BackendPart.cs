@@ -18,7 +18,6 @@ namespace ShoppingSystem
 
         //string currDir = Directory.GetCurrentDirectory();
         string path = Path.Combine(Directory.GetCurrentDirectory(), @"\products.csv");
-        //StreamWriter stream = new StreamWriter("products.csv");
         //string relativepath = @"..\..\..\..\..\products.csv";
         public BackendPart()
         {
