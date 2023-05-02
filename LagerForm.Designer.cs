@@ -48,6 +48,8 @@ namespace ShoppingSystem
             this.label1 = new System.Windows.Forms.Label();
             this.uploadButton = new System.Windows.Forms.Button();
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
+            this.testButton = new System.Windows.Forms.Button();
+            this.showHistory = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -80,7 +82,7 @@ namespace ShoppingSystem
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(1484, 82);
-            this.splitContainer1.SplitterDistance = 685;
+            this.splitContainer1.SplitterDistance = 684;
             this.splitContainer1.TabIndex = 6;
             // 
             // splitContainer3
@@ -97,8 +99,8 @@ namespace ShoppingSystem
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.RemoveButton);
-            this.splitContainer3.Size = new System.Drawing.Size(685, 82);
-            this.splitContainer3.SplitterDistance = 346;
+            this.splitContainer3.Size = new System.Drawing.Size(684, 82);
+            this.splitContainer3.SplitterDistance = 345;
             this.splitContainer3.TabIndex = 8;
             // 
             // addToLagerButton
@@ -114,7 +116,7 @@ namespace ShoppingSystem
             this.addToLagerButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addToLagerButton.Name = "addToLagerButton";
             this.addToLagerButton.Padding = new System.Windows.Forms.Padding(93, 0, 0, 0);
-            this.addToLagerButton.Size = new System.Drawing.Size(346, 82);
+            this.addToLagerButton.Size = new System.Drawing.Size(345, 82);
             this.addToLagerButton.TabIndex = 0;
             this.addToLagerButton.Text = "Ny Produkt";
             this.addToLagerButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -157,7 +159,7 @@ namespace ShoppingSystem
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.ContinueButtton);
-            this.splitContainer2.Size = new System.Drawing.Size(795, 82);
+            this.splitContainer2.Size = new System.Drawing.Size(796, 82);
             this.splitContainer2.SplitterDistance = 397;
             this.splitContainer2.TabIndex = 7;
             // 
@@ -195,7 +197,7 @@ namespace ShoppingSystem
             this.ContinueButtton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ContinueButtton.Name = "ContinueButtton";
             this.ContinueButtton.Padding = new System.Windows.Forms.Padding(120, 0, 0, 0);
-            this.ContinueButtton.Size = new System.Drawing.Size(394, 82);
+            this.ContinueButtton.Size = new System.Drawing.Size(395, 82);
             this.ContinueButtton.TabIndex = 4;
             this.ContinueButtton.Text = "Stäng";
             this.ContinueButtton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -338,12 +340,34 @@ namespace ShoppingSystem
             this.updateTimer.Interval = 60000;
             this.updateTimer.Tick += new System.EventHandler(this.updateTimer_Tick);
             // 
+            // testButton
+            // 
+            this.testButton.Location = new System.Drawing.Point(628, 0);
+            this.testButton.Name = "testButton";
+            this.testButton.Size = new System.Drawing.Size(75, 23);
+            this.testButton.TabIndex = 14;
+            this.testButton.Text = "Test";
+            this.testButton.UseVisualStyleBackColor = true;
+            this.testButton.Click += new System.EventHandler(this.testButton_Click);
+            // 
+            // showHistory
+            // 
+            this.showHistory.Location = new System.Drawing.Point(728, 2);
+            this.showHistory.Name = "showHistory";
+            this.showHistory.Size = new System.Drawing.Size(75, 23);
+            this.showHistory.TabIndex = 14;
+            this.showHistory.Text = "History";
+            this.showHistory.UseVisualStyleBackColor = true;
+            this.showHistory.Click += new System.EventHandler(this.showHistory_Click);
+            // 
             // LagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.ClientSize = new System.Drawing.Size(1484, 750);
+            this.Controls.Add(this.showHistory);
+            this.Controls.Add(this.testButton);
             this.Controls.Add(this.uploadButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lastUpdateLabel);
@@ -396,5 +420,7 @@ namespace ShoppingSystem
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button uploadButton;
         private System.Windows.Forms.Timer updateTimer;
+        private System.Windows.Forms.Button testButton;
+        private System.Windows.Forms.Button showHistory;
     }
 }

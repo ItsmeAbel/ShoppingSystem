@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Printing;
+using System.Net.Http;
 
 namespace ShoppingSystem
 {
@@ -56,6 +57,7 @@ namespace ShoppingSystem
             {
                 var result = from r in biglist where r.id == item.id select r; //find item with matching id
                 result.First().status = result.First().status - item.status; //subtract from the status
+                _ = httpput(item.id, result.First().status);
             }
             //prints out a recipt
             PrintDocument printDocument = new PrintDocument();
@@ -67,6 +69,27 @@ namespace ShoppingSystem
             vagnproductListSource.Clear();
             vagnProductList.Clear();
             DialogResult = DialogResult.OK; //returns ok
+        }
+        private async Task httpput(int iid, int sstatus)
+        {
+            try
+            {
+                string url = $"https://hex.cse.kau.se/~jonavest/csharp-api/?action=update&id={iid}&stock={sstatus}";
+                Console.WriteLine(url);
+
+                var client = new HttpClient();
+                var request = new HttpRequestMessage(HttpMethod.Post, url);
+                var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+                MessageBox.Show(await response.Content.ReadAsStringAsync());
+                //Console.WriteLine(await response.Content.ReadAsStringAsync());
+            }
+            catch
+            {
+
+
+            }
+
         }
 
         //prints into pdf

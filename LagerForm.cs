@@ -27,7 +27,8 @@ namespace ShoppingSystem
         int tempPrice;
         int tempStock; 
         List<ProductList> centralagerList;
-        private static System.Threading.Timer aTimer;
+        List<log> loglist;
+
         public LagerForm()
         {
             InitializeComponent();
@@ -46,6 +47,8 @@ namespace ShoppingSystem
             productDatalistLager.DataSource = productListSource;
             //productDatalistLager.ForeColor = System.Drawing.Color.Red;
             searchComboBox.SelectedItem = "id"; //default pick for the dropdown menu for the search
+
+            loglist = new List<log>();
 
             centralagerList = new List<ProductList>();
             updateTimer.Start();
@@ -408,6 +411,30 @@ namespace ShoppingSystem
         {
             httpgetz();
             updateTimer.Start();
+        }
+        private void saveLog()
+        {
+
+            DateTime now = DateTime.Now; // Get the current date and time
+            string datenow = now.ToString("d");
+            foreach (var item in lagerProductList)
+            {
+                loglist.Add(new log { date = datenow, id = item.id, price = item.price, status = item.status });
+
+            }
+        }
+
+        private void showHistory_Click(object sender, EventArgs e)
+        {
+            if (productDatalistLager.SelectedRows.Count < 1)
+                return;
+            var product = (ProductList)productDatalistLager.SelectedRows[0].DataBoundItem; //den valda produkten
+        }
+
+        private void testButton_Click(object sender, EventArgs e)
+        {
+            saveLog();
+
         }
     }
 }
