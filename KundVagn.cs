@@ -70,6 +70,7 @@ namespace ShoppingSystem
             vagnProductList.Clear();
             DialogResult = DialogResult.OK; //returns ok
         }
+
         private async Task httpput(int iid, int sstatus)
         {
             try

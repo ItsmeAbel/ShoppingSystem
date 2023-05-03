@@ -25,7 +25,16 @@ namespace ShoppingSystem
 
         int tempId;
         int tempPrice;
-        int tempStock; 
+        int tempStock;
+        string tempName;
+        string tempType;
+        string tempAuthor;
+        string tempPlatform;
+        string tempGenre;
+        string tempFormat;
+        string tempLanguage;
+        string tempPlaytime;
+
         List<ProductList> centralagerList;
         List<log> loglist;
 
@@ -251,6 +260,7 @@ namespace ShoppingSystem
         private void updateButton_Click(object sender, EventArgs e)
         {
             httpgetz();
+            saveLog();
         }
 
         private void uploadButton_Click(object sender, EventArgs e)
@@ -309,6 +319,17 @@ namespace ShoppingSystem
                 {
                     foreach (XmlElement prod in elem.ChildNodes)
                     {
+                        tempPrice = 0;
+                        tempStock = 0;
+                        tempName = "";
+                        tempType = "";
+                        tempAuthor = "";
+                        tempPlatform = "";
+                        tempGenre = "";
+                        tempFormat = "";
+                        tempLanguage = "";
+                        tempPlaytime = "";
+
                         foreach (XmlElement belem in prod.ChildNodes)
                         {
 
@@ -329,15 +350,64 @@ namespace ShoppingSystem
                                 tempStock = Int32.Parse(belem.InnerText);
                                 Console.WriteLine(tempStock);
                             }
+                            else if (belem.Name == "name")
+                            {
+                                tempName = belem.InnerText;
+                            }
+                            else if (belem.Name == "type")
+                            {
+                                tempType = belem.InnerText;
+                            }
+                            else if (belem.Name == "author")
+                            {
+                                tempAuthor = belem.InnerText;
+
+                            }
+                            else if (belem.Name == "stock")
+                            {
+                                
+                            }
+                            else if (belem.Name == "genre")
+                            {
+                                tempGenre = belem.InnerText;
+                            }
+                            else if (belem.Name == "format")
+                            {
+                                tempFormat = belem.InnerText;
+                            }
+                            else if (belem.Name == "language")
+                            {
+                                tempLanguage = belem.InnerText;
+                            }
+                            else if (belem.Name == "platform")
+                            {
+                                tempPlatform = belem.InnerText;
+                            }
+                            else if (belem.Name == "playtime")
+                            {
+                                tempPlaytime = belem.InnerText;
+                            }
 
                             if (backend.idcheck(tempId) == true)
                             {
                                 int indexx = lagerProductList.IndexOf(lagerProductList.FirstOrDefault(item => item.id == tempId));
                                 lagerProductList[indexx].price = tempPrice;
                                 lagerProductList[indexx].status = tempStock;
+                                lagerProductList[indexx].name = tempName;
+                                lagerProductList[indexx].type = tempType;
+                                lagerProductList[indexx].author = tempAuthor;
+                                lagerProductList[indexx].platform = tempPlatform;
+                                lagerProductList[indexx].playtime = tempPlaytime;
+                                lagerProductList[indexx].language = tempLanguage;
+                                lagerProductList[indexx].genre = tempGenre;
+                                lagerProductList[indexx].format = tempFormat;
+
+                                
 
                                 productListSource.ResetBindings(false);
-                                
+                                backend.saveToCSV(lagerProductList);
+
+
                             }
                             else if (backend.idcheck(tempId) == false)
                             {
@@ -359,6 +429,7 @@ namespace ShoppingSystem
                                 });
                                 productListSource.ResetBindings(false);
                             }
+
 
 
                         }
@@ -410,17 +481,18 @@ namespace ShoppingSystem
         private void updateTimer_Tick(object sender, EventArgs e)
         {
             httpgetz();
+            saveLog();
             updateTimer.Start();
         }
         private void saveLog()
         {
-
+            backend.saveToCSV(lagerProductList);
             DateTime now = DateTime.Now; // Get the current date and time
-            string datenow = now.ToString("d");
+            string datenow = now.ToString("HH:mm:ss");
             foreach (var item in lagerProductList)
             {
                 loglist.Add(new log { date = datenow, id = item.id, price = item.price, status = item.status });
-
+                
             }
         }
 
@@ -429,12 +501,8 @@ namespace ShoppingSystem
             if (productDatalistLager.SelectedRows.Count < 1)
                 return;
             var product = (ProductList)productDatalistLager.SelectedRows[0].DataBoundItem; //den valda produkten
-        }
-
-        private void testButton_Click(object sender, EventArgs e)
-        {
-            saveLog();
-
+            historyChart histochart = new historyChart(loglist, product);
+            histochart.Show();
         }
     }
 }

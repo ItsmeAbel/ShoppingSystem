@@ -48,7 +48,6 @@ namespace ShoppingSystem
             this.label1 = new System.Windows.Forms.Label();
             this.uploadButton = new System.Windows.Forms.Button();
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
-            this.testButton = new System.Windows.Forms.Button();
             this.showHistory = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -160,7 +159,7 @@ namespace ShoppingSystem
             // 
             this.splitContainer2.Panel2.Controls.Add(this.ContinueButtton);
             this.splitContainer2.Size = new System.Drawing.Size(796, 82);
-            this.splitContainer2.SplitterDistance = 397;
+            this.splitContainer2.SplitterDistance = 396;
             this.splitContainer2.TabIndex = 7;
             // 
             // GrossitButton
@@ -176,7 +175,7 @@ namespace ShoppingSystem
             this.GrossitButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GrossitButton.Name = "GrossitButton";
             this.GrossitButton.Padding = new System.Windows.Forms.Padding(133, 0, 0, 0);
-            this.GrossitButton.Size = new System.Drawing.Size(397, 82);
+            this.GrossitButton.Size = new System.Drawing.Size(396, 82);
             this.GrossitButton.TabIndex = 5;
             this.GrossitButton.Text = "Grossit";
             this.GrossitButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -197,7 +196,7 @@ namespace ShoppingSystem
             this.ContinueButtton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ContinueButtton.Name = "ContinueButtton";
             this.ContinueButtton.Padding = new System.Windows.Forms.Padding(120, 0, 0, 0);
-            this.ContinueButtton.Size = new System.Drawing.Size(395, 82);
+            this.ContinueButtton.Size = new System.Drawing.Size(396, 82);
             this.ContinueButtton.TabIndex = 4;
             this.ContinueButtton.Text = "Stäng";
             this.ContinueButtton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -296,7 +295,7 @@ namespace ShoppingSystem
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(100, 28);
             this.updateButton.TabIndex = 10;
-            this.updateButton.Text = "Uppdatera";
+            this.updateButton.Text = "Hämta data";
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
@@ -326,11 +325,11 @@ namespace ShoppingSystem
             // 
             this.uploadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.uploadButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.uploadButton.Location = new System.Drawing.Point(1076, 1);
+            this.uploadButton.Location = new System.Drawing.Point(1028, 1);
             this.uploadButton.Name = "uploadButton";
-            this.uploadButton.Size = new System.Drawing.Size(75, 28);
+            this.uploadButton.Size = new System.Drawing.Size(123, 28);
             this.uploadButton.TabIndex = 13;
-            this.uploadButton.Text = "Upload";
+            this.uploadButton.Text = "Synkronisera";
             this.uploadButton.UseVisualStyleBackColor = true;
             this.uploadButton.Click += new System.EventHandler(this.uploadButton_Click);
             // 
@@ -340,23 +339,15 @@ namespace ShoppingSystem
             this.updateTimer.Interval = 60000;
             this.updateTimer.Tick += new System.EventHandler(this.updateTimer_Tick);
             // 
-            // testButton
-            // 
-            this.testButton.Location = new System.Drawing.Point(628, 0);
-            this.testButton.Name = "testButton";
-            this.testButton.Size = new System.Drawing.Size(75, 23);
-            this.testButton.TabIndex = 14;
-            this.testButton.Text = "Test";
-            this.testButton.UseVisualStyleBackColor = true;
-            this.testButton.Click += new System.EventHandler(this.testButton_Click);
-            // 
             // showHistory
             // 
-            this.showHistory.Location = new System.Drawing.Point(728, 2);
+            this.showHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.showHistory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.showHistory.Location = new System.Drawing.Point(824, 1);
             this.showHistory.Name = "showHistory";
-            this.showHistory.Size = new System.Drawing.Size(75, 23);
+            this.showHistory.Size = new System.Drawing.Size(177, 27);
             this.showHistory.TabIndex = 14;
-            this.showHistory.Text = "History";
+            this.showHistory.Text = "Visa historik ";
             this.showHistory.UseVisualStyleBackColor = true;
             this.showHistory.Click += new System.EventHandler(this.showHistory_Click);
             // 
@@ -367,7 +358,6 @@ namespace ShoppingSystem
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.ClientSize = new System.Drawing.Size(1484, 750);
             this.Controls.Add(this.showHistory);
-            this.Controls.Add(this.testButton);
             this.Controls.Add(this.uploadButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lastUpdateLabel);
@@ -420,7 +410,6 @@ namespace ShoppingSystem
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button uploadButton;
         private System.Windows.Forms.Timer updateTimer;
-        private System.Windows.Forms.Button testButton;
         private System.Windows.Forms.Button showHistory;
     }
 }

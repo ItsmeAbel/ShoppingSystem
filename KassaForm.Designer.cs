@@ -32,13 +32,14 @@ namespace ShoppingSystem
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KassaForm));
             this.ListLabel = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.Add = new System.Windows.Forms.Button();
+            this.KundKorgButton = new System.Windows.Forms.Button();
             this.productDatalistKassa = new System.Windows.Forms.DataGridView();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchComboBox = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.returnButton = new System.Windows.Forms.Button();
-            this.Add = new System.Windows.Forms.Button();
-            this.KundKorgButton = new System.Windows.Forms.Button();
+            this.kassaHistoryButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -74,6 +75,48 @@ namespace ShoppingSystem
             this.splitContainer1.Size = new System.Drawing.Size(1484, 82);
             this.splitContainer1.SplitterDistance = 704;
             this.splitContainer1.TabIndex = 3;
+            // 
+            // Add
+            // 
+            this.Add.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Add.FlatAppearance.BorderSize = 0;
+            this.Add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Add.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Add.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.Add.Image = global::ShoppingSystem.Properties.Resources.add;
+            this.Add.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Add.Location = new System.Drawing.Point(0, 0);
+            this.Add.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Add.Name = "Add";
+            this.Add.Padding = new System.Windows.Forms.Padding(280, 0, 0, 0);
+            this.Add.Size = new System.Drawing.Size(704, 82);
+            this.Add.TabIndex = 4;
+            this.Add.Text = "  Köp";
+            this.Add.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Add.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Add.UseVisualStyleBackColor = true;
+            this.Add.Click += new System.EventHandler(this.Add_Click);
+            // 
+            // KundKorgButton
+            // 
+            this.KundKorgButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.KundKorgButton.FlatAppearance.BorderSize = 0;
+            this.KundKorgButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.KundKorgButton.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KundKorgButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.KundKorgButton.Image = global::ShoppingSystem.Properties.Resources.go;
+            this.KundKorgButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.KundKorgButton.Location = new System.Drawing.Point(0, 0);
+            this.KundKorgButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.KundKorgButton.Name = "KundKorgButton";
+            this.KundKorgButton.Padding = new System.Windows.Forms.Padding(333, 0, 0, 0);
+            this.KundKorgButton.Size = new System.Drawing.Size(776, 82);
+            this.KundKorgButton.TabIndex = 4;
+            this.KundKorgButton.Text = "  Kundkorg";
+            this.KundKorgButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.KundKorgButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.KundKorgButton.UseVisualStyleBackColor = true;
+            this.KundKorgButton.Click += new System.EventHandler(this.button2_Click);
             // 
             // productDatalistKassa
             // 
@@ -132,7 +175,7 @@ namespace ShoppingSystem
             "platform",
             "playtime"});
             this.searchComboBox.Location = new System.Drawing.Point(127, 4);
-            this.searchComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.searchComboBox.Name = "searchComboBox";
             this.searchComboBox.Size = new System.Drawing.Size(160, 24);
             this.searchComboBox.TabIndex = 6;
@@ -161,47 +204,17 @@ namespace ShoppingSystem
             this.returnButton.UseVisualStyleBackColor = true;
             this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
             // 
-            // Add
+            // kassaHistoryButton
             // 
-            this.Add.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Add.FlatAppearance.BorderSize = 0;
-            this.Add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Add.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Add.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.Add.Image = global::ShoppingSystem.Properties.Resources.add;
-            this.Add.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Add.Location = new System.Drawing.Point(0, 0);
-            this.Add.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Add.Name = "Add";
-            this.Add.Padding = new System.Windows.Forms.Padding(280, 0, 0, 0);
-            this.Add.Size = new System.Drawing.Size(704, 82);
-            this.Add.TabIndex = 4;
-            this.Add.Text = "  Köp";
-            this.Add.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Add.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Add.UseVisualStyleBackColor = true;
-            this.Add.Click += new System.EventHandler(this.Add_Click);
-            // 
-            // KundKorgButton
-            // 
-            this.KundKorgButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.KundKorgButton.FlatAppearance.BorderSize = 0;
-            this.KundKorgButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.KundKorgButton.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.KundKorgButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.KundKorgButton.Image = global::ShoppingSystem.Properties.Resources.go;
-            this.KundKorgButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.KundKorgButton.Location = new System.Drawing.Point(0, 0);
-            this.KundKorgButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.KundKorgButton.Name = "KundKorgButton";
-            this.KundKorgButton.Padding = new System.Windows.Forms.Padding(333, 0, 0, 0);
-            this.KundKorgButton.Size = new System.Drawing.Size(776, 82);
-            this.KundKorgButton.TabIndex = 4;
-            this.KundKorgButton.Text = "  Kundkorg";
-            this.KundKorgButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.KundKorgButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.KundKorgButton.UseVisualStyleBackColor = true;
-            this.KundKorgButton.Click += new System.EventHandler(this.button2_Click);
+            this.kassaHistoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.kassaHistoryButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.kassaHistoryButton.Location = new System.Drawing.Point(718, 4);
+            this.kassaHistoryButton.Name = "kassaHistoryButton";
+            this.kassaHistoryButton.Size = new System.Drawing.Size(165, 27);
+            this.kassaHistoryButton.TabIndex = 8;
+            this.kassaHistoryButton.Text = "Visa Historik";
+            this.kassaHistoryButton.UseVisualStyleBackColor = true;
+            this.kassaHistoryButton.Click += new System.EventHandler(this.kassaHistoryButton_Click);
             // 
             // KassaForm
             // 
@@ -209,6 +222,7 @@ namespace ShoppingSystem
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.ClientSize = new System.Drawing.Size(1484, 750);
+            this.Controls.Add(this.kassaHistoryButton);
             this.Controls.Add(this.returnButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.searchComboBox);
@@ -242,5 +256,6 @@ namespace ShoppingSystem
         private System.Windows.Forms.ComboBox searchComboBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button returnButton;
+        private System.Windows.Forms.Button kassaHistoryButton;
     }
 }
