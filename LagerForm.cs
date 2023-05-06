@@ -13,6 +13,7 @@ using System.Xml;
 using System.Xml.Linq;
 using Microsoft.VisualBasic;
 using System.Timers;
+using System.Threading;
 
 namespace ShoppingSystem
 {
@@ -23,6 +24,7 @@ namespace ShoppingSystem
         BindingList<ProductList> lagerProductList;
         BindingSource productListSource;
 
+        //temprary variables for stoing elements from the xml data
         int tempId;
         int tempPrice;
         int tempStock;
@@ -36,7 +38,7 @@ namespace ShoppingSystem
         string tempPlaytime;
 
         List<ProductList> centralagerList;
-        List<log> loglist;
+        List<log> lagerlog; //list to store the log data
 
         public LagerForm()
         {
@@ -57,31 +59,23 @@ namespace ShoppingSystem
             //productDatalistLager.ForeColor = System.Drawing.Color.Red;
             searchComboBox.SelectedItem = "id"; //default pick for the dropdown menu for the search
 
-            loglist = new List<log>();
+            lagerlog = new List<log>(backend.returnLog()); //initalize the log list
 
             centralagerList = new List<ProductList>();
-            updateTimer.Start();
+            updateTimer.Start(); //starts timer
       
             // Console.ReadKey();
         }
 
-        private static void Timer_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            DateTime now = DateTime.Now; // Get the current date and time
-            string date = now.ToString("d");
-            // Your task goes here
-            Console.WriteLine("Task executed at: " + date);
-
-        }
-
+        //"stäng" button
         private void ContinueButtton_Click(object sender, EventArgs e)
         {
-            backend.saveToCSV(lagerProductList);
-            updateTimer.Stop();
+            backend.saveToCSV(lagerProductList); //sends list to backend to be saved
+            updateTimer.Stop(); //stops timer
             this.Close();
         }
 
-        //används för att fylla på ett produkt
+        //"Grossit" knappen som används för att fylla på ett produkt
         private void button1_Click(object sender, EventArgs e)
         {
             if (productDatalistLager.SelectedRows.Count < 1)
@@ -102,7 +96,7 @@ namespace ShoppingSystem
             }
         }
 
-        //används för att lägga ett nytt vara
+        //används för att lägga till nytt produkt
         private void addToLagerButton_Click(object sender, EventArgs e)
         {
             //ps. had a try catch here
@@ -129,18 +123,12 @@ namespace ShoppingSystem
                 }
                 else
                 {
-                    
-
                 }
-
-            form.Dispose();
-
-
-            
+            form.Dispose(); 
             //updateList();
         }
 
-        //tar bort ett vara
+        //"ta bort" knappen som används för att tar bort produkt
         private void RemoveButton_Click(object sender, EventArgs e)
         {
             if (productDatalistLager.SelectedRows.Count < 1)
@@ -257,57 +245,62 @@ namespace ShoppingSystem
             }
         }
 
+        //"Hämta data" button used for downloading data from central stock
         private void updateButton_Click(object sender, EventArgs e)
         {
             httpgetz();
             saveLog();
         }
 
+        //"Synkronisera" button to update the central stock
         private void uploadButton_Click(object sender, EventArgs e)
         {
             _ = httpput();
         }
 
+
+        //gets API data from the central and updates the local stock
         private void httpgetz()
         {
             WebClient client = new WebClient();
             string text;
             try
             {
-                text = client.DownloadString("https://hex.cse.kau.se/~jonavest/csharp-api");
+                text = client.DownloadString("https://hex.cse.kau.se/~jonavest/csharp-api"); //downloads data from the api into a string
             }
             catch
             {
-                text = client.DownloadString("https://hex.cse.kau.se/~jonavest/csharp-api/?action=error");
+                text = client.DownloadString("https://hex.cse.kau.se/~jonavest/csharp-api/?action=error"); //downloads error data instead
             }
 
             XmlDocument doc = new XmlDocument();
-            doc.LoadXml(text);
+            doc.LoadXml(text); //loads the string into an xml doc
 
             int numChildElements = doc.ChildNodes
                             .OfType<XmlElement>()
                             .Count();
             Console.WriteLine(numChildElements);
 
-            foreach (XmlElement elem in doc.FirstChild.ChildNodes)
+            foreach (XmlElement elem in doc.FirstChild.ChildNodes) //goes through each father node
             {
-                //Console.WriteLine(elem.InnerXml + "\n");
-                if (elem.Name == "error")
+                //triggers if the contents of the string are from the error api
+                if (elem.Name == "error") //if the node has the name "error"
                 {
-                    MessageBox.Show(this, elem.InnerText, "Error");
+                    MessageBox.Show(this, elem.InnerText, "Error"); //display it's contentns
                 }
-                else if (elem.Name == "metadata")
+                //triggers if the actual api has been downloaded without issues
+                else if (elem.Name == "metadata") // if the node has the name "metadata"
                 {
-                    foreach (XmlElement mdata in elem.ChildNodes)
+                    foreach (XmlElement mdata in elem.ChildNodes) //loops through each child node of metadata
                     {
 
                         if (mdata.Name == "lastseed")
                         {
-
+                            //does something
                         }
-                        else if (mdata.Name == "lastupdate")
+                        else if (mdata.Name == "lastupdate") //if child node name is lastupdate
                         {
-                            lastUpdateLabel.Text = mdata.InnerText;
+                            lastUpdateLabel.Text = mdata.InnerText; //get update time
                             //SetText(mdata.InnerText.ToString());
                             Console.WriteLine(mdata.InnerText);
                         }
@@ -315,10 +308,11 @@ namespace ShoppingSystem
 
                     }
                 }
-                else if (elem.Name == "products")
+                else if (elem.Name == "products") //if the node is products
                 {
-                    foreach (XmlElement prod in elem.ChildNodes)
+                    foreach (XmlElement prod in elem.ChildNodes) //loops throught each child node in "products"
                     {
+                        //resets the variables
                         tempPrice = 0;
                         tempStock = 0;
                         tempName = "";
@@ -330,12 +324,12 @@ namespace ShoppingSystem
                         tempLanguage = "";
                         tempPlaytime = "";
 
-                        foreach (XmlElement belem in prod.ChildNodes)
+                        foreach (XmlElement belem in prod.ChildNodes) //loops through each child node in "book"
                         {
 
-                            if (belem.Name == "id")
+                            if (belem.Name == "id") //if child name is "id"
                             {
-                                tempId = Int32.Parse(belem.InnerText);
+                                tempId = Int32.Parse(belem.InnerText); 
                                 Console.WriteLine(tempId);
                                 //centralagerList.Add(new ProductList { });
                             }
@@ -363,10 +357,6 @@ namespace ShoppingSystem
                                 tempAuthor = belem.InnerText;
 
                             }
-                            else if (belem.Name == "stock")
-                            {
-                                
-                            }
                             else if (belem.Name == "genre")
                             {
                                 tempGenre = belem.InnerText;
@@ -388,8 +378,9 @@ namespace ShoppingSystem
                                 tempPlaytime = belem.InnerText;
                             }
 
-                            if (backend.idcheck(tempId) == true)
+                            if (backend.idcheck(tempId) == true) //checks if the product with the id already exists in the local stock
                             {
+                                //updates the attributes of the product in the local stock 
                                 int indexx = lagerProductList.IndexOf(lagerProductList.FirstOrDefault(item => item.id == tempId));
                                 lagerProductList[indexx].price = tempPrice;
                                 lagerProductList[indexx].status = tempStock;
@@ -404,104 +395,108 @@ namespace ShoppingSystem
 
                                 
 
-                                productListSource.ResetBindings(false);
-                                backend.saveToCSV(lagerProductList);
+                                productListSource.ResetBindings(false); //refreshes the data grid
+                                backend.saveToCSV(lagerProductList); //saves the new list as a csv file
 
 
                             }
-                            else if (backend.idcheck(tempId) == false)
+                            else if (backend.idcheck(tempId) == false) // if a product with the id doesn't exist
                             {
-                                int indexx = lagerProductList.IndexOf(lagerProductList.FirstOrDefault(item => item.id == tempId));
-
+                                //gets item id
+                                int indexx = lagerProductList.IndexOf(lagerProductList.FirstOrDefault(item => item.id == tempId)); 
+                                //adds a new item to the list
                                 lagerProductList.Add(new ProductList()
                                 {
                                     id = tempId,
-                                    name = "new item",
+                                    name = tempName,
                                     price = tempPrice,
-                                    type = "new item",
-                                    author = "new item ",
-                                    genre = "new item",
-                                    format = "new item",
-                                    language = "new item",
-                                    platform = "new item",
-                                    playtime = "new item",
+                                    type = tempType,
+                                    author = tempAuthor,
+                                    genre = tempGenre,
+                                    format = tempFormat,
+                                    language = tempLanguage,
+                                    platform = tempPlatform,
+                                    playtime = tempPlaytime,
                                     status = tempStock
                                 });
-                                productListSource.ResetBindings(false);
+                                productListSource.ResetBindings(false); //refreshes the data grid
+                                backend.saveToCSV(lagerProductList); //saves the new list as a csv file
+
                             }
-
-
-
                         }
-
-
-
-
                     }
                 }
-
-
-            }
-
-
-        }
-
-        delegate void SetTextCallback(string text);
-        private void SetText(string text)
-        {
-            // InvokeRequired required compares the thread ID of the
-            // calling thread to the thread ID of the creating thread.
-            // If these threads are different, it returns true.
-            if (this.lastUpdateLabel.InvokeRequired)
-            {
-                SetTextCallback d = new SetTextCallback(SetText);
-                this.Invoke(d, new object[] { text });
-            }
-            else
-            {
-                this.lastUpdateLabel.Text = text;
             }
         }
+        
+        //updates data in the api
         private async Task httpput()
         {
             foreach (var item in lagerProductList)
             {
-                string url = $"https://hex.cse.kau.se/~jonavest/csharp-api/?action=update&id={item.id}&stock={item.status}";
-                Console.WriteLine(url);
+                try
+                {
+                    string url = $"https://hex.cse.kau.se/~jonavest/csharp-api/?action=update&id={item.id}&stock={item.status}";
+                    Console.WriteLine(url);
 
-                var client = new HttpClient();
-                var request = new HttpRequestMessage(HttpMethod.Post, url);
-                var response = await client.SendAsync(request);
-                response.EnsureSuccessStatusCode();
-                Console.WriteLine(await response.Content.ReadAsStringAsync());
+                    var client = new HttpClient();
+                    var request = new HttpRequestMessage(HttpMethod.Post, url);
+                    var response = await client.SendAsync(request);
+                    response.EnsureSuccessStatusCode();
+                    Console.WriteLine(await response.Content.ReadAsStringAsync());
+                }
+                catch
+                {
+                    Console.WriteLine("Error in httpput");
+                }
+            }
+        }
+
+        //method for timer. ticks once every method. timer is in the designer
+        private void updateTimer_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                httpgetz(); //get api data
+                saveLog();  //save data to log
+                updateTimer.Start(); //starts the timer
+            }
+            catch
+            {
+                notificationThread.Start();
+                updateTimer.Start();
             }
 
         }
-
-        private void updateTimer_Tick(object sender, EventArgs e)
+        // Create a new thread for the notification process
+        Thread notificationThread = new Thread(() =>
         {
-            httpgetz();
-            saveLog();
-            updateTimer.Start();
-        }
+            MessageBox.Show("Något är fel med timer, vänligen kontrollera!");
+        });
+        
+        //saves log
         private void saveLog()
         {
             backend.saveToCSV(lagerProductList);
+            lagerlog = backend.returnLog();
             DateTime now = DateTime.Now; // Get the current date and time
             string datenow = now.ToString("HH:mm:ss");
             foreach (var item in lagerProductList)
             {
-                loglist.Add(new log { date = datenow, id = item.id, price = item.price, status = item.status });
-                
+                lagerlog.Add(new log { date = datenow, id = item.id, price = item.price, status = item.status });
             }
+
+            backend.saveToLog(lagerlog);
         }
 
+        //history button
         private void showHistory_Click(object sender, EventArgs e)
         {
-            if (productDatalistLager.SelectedRows.Count < 1)
+            lagerlog = backend.returnLog();
+            if (productDatalistLager.SelectedRows.Count < 1) 
                 return;
             var product = (ProductList)productDatalistLager.SelectedRows[0].DataBoundItem; //den valda produkten
-            historyChart histochart = new historyChart(loglist, product);
+            historyChart histochart = new historyChart(lagerlog, product); //opens graph form. sends loglist and product to the form
             histochart.Show();
         }
     }

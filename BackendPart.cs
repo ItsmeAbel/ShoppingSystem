@@ -7,7 +7,7 @@ using System.IO;
 using CsvHelper;
 using System.Globalization;
 using CsvHelper.Configuration;
-
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ShoppingSystem
 {
@@ -15,6 +15,7 @@ namespace ShoppingSystem
     {
 
         List<ProductList> productlist;
+        public List<log> loglist;
 
         //string currDir = Directory.GetCurrentDirectory();
         string path = Path.Combine(Directory.GetCurrentDirectory(), @"\products.csv");
@@ -24,6 +25,7 @@ namespace ShoppingSystem
         {
 
             productlist = new List<ProductList>();
+            loglist = new List<log>();
         }
 
         //läser data från csv filen och lägger datan i produkt listan
@@ -98,6 +100,26 @@ namespace ShoppingSystem
             }
 
         }
+
+        public void saveToLog(List<log> templog)
+        {
+            using (var stream = new StreamWriter("log.csv"))
+            using (var csv = new CsvWriter(stream, CultureInfo.InvariantCulture))
+            {
+                csv.WriteRecords(templog);
+            }
+        }
+        public List<log> returnLog()
+        {
+            using (var reader = new StreamReader(Directory.GetCurrentDirectory() + "\\log.csv")) //Easy solution for a relative path. Can't beleve i spent 2 hours on this just to find out this solution exists
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                loglist = csv.GetRecords<log>().ToList();
+
+            }
+            return loglist;
+        }
+
 
     }
 }

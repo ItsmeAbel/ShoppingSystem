@@ -23,7 +23,7 @@ namespace ShoppingSystem
         BindingList<ProductList> kassaProductList;
         BindingSource productListSource;
 
-        List<log> loglist;
+        List<log> kassalog;
         
         public KassaForm()
         {
@@ -44,7 +44,7 @@ namespace ShoppingSystem
             productDatalistKassa.DataSource = productListSource;
             searchComboBox.SelectedItem = "id"; //default pick for the dropdown menu for the search
 
-            loglist = new List<log>();
+            kassalog = backend.returnLog();
         }
 
 
@@ -247,6 +247,7 @@ namespace ShoppingSystem
             }
         }
 
+        //used for returning items
         private void button1_Click(object sender, EventArgs e)
         {
             returnForm retrnform = new returnForm(returnlist); //sends the new list to form as a parameter
@@ -268,23 +269,16 @@ namespace ShoppingSystem
 
         private void kassaHistoryButton_Click(object sender, EventArgs e)
         {
+            foreach (var item in backend.returnLog())
+            {
+                Console.WriteLine(item.date + item.id);
+            }
+
             if (productDatalistKassa.SelectedRows.Count < 1)
                 return;
             var product = (ProductList)productDatalistKassa.SelectedRows[0].DataBoundItem; //den valda produkten
-            historyChart histochart = new historyChart(loglist, product);
+            historyChart histochart = new historyChart(kassalog, product);
             histochart.Show();
-        }
-
-        private void saveLog()
-        {
-            backend.saveToCSV(kassaProductList);
-            DateTime now = DateTime.Now; // Get the current date and time
-            string datenow = now.ToString("HH:mm:ss");
-            foreach (var item in kassaProductList)
-            {
-                loglist.Add(new log { date = datenow, id = item.id, price = item.price, status = item.status });
-
-            }
         }
     }
 }

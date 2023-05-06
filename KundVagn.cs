@@ -57,7 +57,9 @@ namespace ShoppingSystem
             {
                 var result = from r in biglist where r.id == item.id select r; //find item with matching id
                 result.First().status = result.First().status - item.status; //subtract from the status
-                _ = httpput(item.id, result.First().status);
+
+                _ = httpput(item.id, result.First().status); //updates the stock of the product with the id
+                //_ return value is immideatly discared as it serves no other purpose
             }
             //prints out a recipt
             PrintDocument printDocument = new PrintDocument();
@@ -71,6 +73,7 @@ namespace ShoppingSystem
             DialogResult = DialogResult.OK; //returns ok
         }
 
+        //method to update api data
         private async Task httpput(int iid, int sstatus)
         {
             try
