@@ -25,7 +25,7 @@ namespace ShoppingSystem
 
         List<log> kassalog;
         
-        public KassaForm()
+        public KassaForm(List<log> templog)
         {
             InitializeComponent();
             vagnlist = new List<ProductList>();
@@ -43,8 +43,7 @@ namespace ShoppingSystem
             productListSource.DataSource = kassaProductList;
             productDatalistKassa.DataSource = productListSource;
             searchComboBox.SelectedItem = "id"; //default pick for the dropdown menu for the search
-
-            kassalog = backend.returnLog();
+            kassalog = templog;
         }
 
 
@@ -267,17 +266,13 @@ namespace ShoppingSystem
             productListSource.ResetBindings(false);
         }
 
-        private void kassaHistoryButton_Click(object sender, EventArgs e)
-        {
-            foreach (var item in backend.returnLog())
-            {
-                Console.WriteLine(item.date + item.id);
-            }
 
+        private void kassaHistoryButton_Click_1(object sender, EventArgs e)
+        {
             if (productDatalistKassa.SelectedRows.Count < 1)
                 return;
             var product = (ProductList)productDatalistKassa.SelectedRows[0].DataBoundItem; //den valda produkten
-            historyChart histochart = new historyChart(kassalog, product);
+            historyChart histochart = new historyChart(kassalog, product); //opens graph form. sends loglist and product to the form
             histochart.Show();
         }
     }

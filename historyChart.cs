@@ -13,7 +13,6 @@ namespace ShoppingSystem
 {
     public partial class historyChart : Form
     {
-        BackendPart backend;
         public historyChart(List<log> templist, ProductList product) //takes log list and product as parameters
         {
             InitializeComponent();

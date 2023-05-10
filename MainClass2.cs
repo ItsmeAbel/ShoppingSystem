@@ -12,9 +12,11 @@ namespace ShoppingSystem
 {
     public partial class Shwep : Form
     {
+        List<log> mainLog; //used for logging
         public Shwep()
         {
             InitializeComponent();
+            mainLog = new List<log>();
         }
 
         //loads kassaform on button click
@@ -22,7 +24,7 @@ namespace ShoppingSystem
         {
             //opens the checkout form
             //this.Hide();
-            KassaForm form = new KassaForm();
+            KassaForm form = new KassaForm(mainLog);
             form.Show();
         }
 
@@ -30,8 +32,10 @@ namespace ShoppingSystem
         private void LagerButton_Click(object sender, EventArgs e)
         {
             //this.Hide();
-            LagerForm form = new LagerForm();
+            LagerForm form = new LagerForm(mainLog);
+            //DialogResult result = form.ShowDialog();
             form.Show();
+            mainLog = form.MyList;
         }
     }
 

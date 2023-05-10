@@ -14,6 +14,7 @@ using System.Xml.Linq;
 using Microsoft.VisualBasic;
 using System.Timers;
 using System.Threading;
+using System.Collections;
 
 namespace ShoppingSystem
 {
@@ -38,9 +39,9 @@ namespace ShoppingSystem
         string tempPlaytime;
 
         List<ProductList> centralagerList;
-        List<log> lagerlog; //list to store the log data
+        public List<log> lagerlog; //list to store the log data
 
-        public LagerForm()
+        public LagerForm(List<log> templog)
         {
             InitializeComponent();
             //List<ProductList> locallist = backend.loadList();
@@ -59,12 +60,17 @@ namespace ShoppingSystem
             //productDatalistLager.ForeColor = System.Drawing.Color.Red;
             searchComboBox.SelectedItem = "id"; //default pick for the dropdown menu for the search
 
-            lagerlog = new List<log>(backend.returnLog()); //initalize the log list
+            lagerlog = templog; //initalize the log list
 
             centralagerList = new List<ProductList>();
             updateTimer.Start(); //starts timer
-      
+
             // Console.ReadKey();
+        }
+
+        public List<log> MyList
+        {
+            get { return lagerlog; }
         }
 
         //"stäng" button
@@ -274,7 +280,7 @@ namespace ShoppingSystem
             }
 
             XmlDocument doc = new XmlDocument();
-            doc.LoadXml(text); //loads the string into an xml doc
+            doc.LoadXml(text); //loads the string as an xml doc
 
             int numChildElements = doc.ChildNodes
                             .OfType<XmlElement>()
@@ -478,21 +484,21 @@ namespace ShoppingSystem
         private void saveLog()
         {
             backend.saveToCSV(lagerProductList);
-            lagerlog = backend.returnLog();
+            //lagerlog = backend.returnLog();
             DateTime now = DateTime.Now; // Get the current date and time
             string datenow = now.ToString("HH:mm:ss");
             foreach (var item in lagerProductList)
             {
                 lagerlog.Add(new log { date = datenow, id = item.id, price = item.price, status = item.status });
             }
+            this.DialogResult = DialogResult.OK;
 
-            backend.saveToLog(lagerlog);
+            //backend.saveToLog(lagerlog);
         }
 
         //history button
         private void showHistory_Click(object sender, EventArgs e)
         {
-            lagerlog = backend.returnLog();
             if (productDatalistLager.SelectedRows.Count < 1) 
                 return;
             var product = (ProductList)productDatalistLager.SelectedRows[0].DataBoundItem; //den valda produkten
